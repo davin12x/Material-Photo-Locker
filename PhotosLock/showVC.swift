@@ -8,14 +8,23 @@
 
 import UIKit
 import CoreData
+import BSImagePicker
+import Photos
+import DKImagePickerController
+
 
 class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var collection : UICollectionView!
+    let vc = BSImagePickerViewController()
+    let pickerController = DKImagePickerController()
+    public var fullScreenImage: UIImage?
+    internal var selectedAssets = [DKAsset]()
     
     var imagePicker = UIImagePickerController()
     var photos = [Photos]()
     var saveValue = [Int]()
     var clearImageData = 0
+    var imageCounter = 0
    //@IBOutlet weak var photoImage :UIImageView!
     
     override func viewDidLoad() {
@@ -24,6 +33,8 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         collection.delegate = self
         collection.dataSource = self
         imagePicker.delegate = self
+        
+        
     }
     override func viewDidAppear(animated: Bool) {
         fetchAndSetResult()
@@ -80,7 +91,6 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
 
   
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       // print(photos.count)
         return photos.count
         
     }
@@ -136,14 +146,81 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
             
         }
     }
+    
    
     @IBAction func onAddPressed(sender: AnyObject) {
-       presentViewController(imagePicker, animated: true, completion: nil)
+        pickerController.didSelectAssets = { (assets: [DKAsset]) in
+            print("didSelectAssets")
+            print(assets)
+            self.imageCounter = 0
+            self.pickerController.allowMultipleTypes = false
+            self.pickerController.allowsLandscape = false
+            var orignalImages :[UIImage] = []
+            for asset in assets{
+                asset.fetchFullScreenImageWithCompleteBlock({ (image, info) -> Void in
+                    orignalImages.append(image!)
+                    print(orignalImages.count)
+                    let imagesss = orignalImages[self.imageCounter]
+                                    let app = UIApplication.sharedApplication().delegate as! AppDelegate
+                                    let context = app.managedObjectContext
+                                    let entity = NSEntityDescription.entityForName("Photos", inManagedObjectContext: context)!
+                                    let photos = Photos(entity:entity, insertIntoManagedObjectContext: context)
+                                    photos.setPhotosImage(imagesss)
+                                    context.insertObject(photos)
+                                    do{
+                                        try context.save()
+                                        self.imageCounter++
+                                        
+                                    }catch { let err = error as? NSError
+                                        print("could not save Data\(error)")
+                                    }
+                    
+                })
+            }
+        }
+        
+        self.presentViewController(pickerController, animated: true) {}
+//       //presentViewController(imagePicker, animated: true, completion: nil)
+//        bs_presentImagePickerController(vc, animated: true,
+//            select: { (asset: PHAsset) -> Void in
+//               
+//                let manager = PHImageManager.defaultManager()
+//                let option = PHImageRequestOptions()
+//                var thumbnail = UIImage()
+//                option.synchronous = true
+//                manager.requestImageForAsset(asset, targetSize: CGSize(width: 600.0, height: 600.0), contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
+//                    thumbnail = result!
+//                    print(thumbnail)
+//                })
+//                let imagesss = thumbnail
+//                let app = UIApplication.sharedApplication().delegate as! AppDelegate
+//                let context = app.managedObjectContext
+//                let entity = NSEntityDescription.entityForName("Photos", inManagedObjectContext: context)!
+//                let photos = Photos(entity:entity, insertIntoManagedObjectContext: context)
+//                photos.setPhotosImage(imagesss)
+//                context.insertObject(photos)
+//                do{
+//                    try context.save()
+//                    
+//                }catch { let err = error as? NSError
+//                    print("could not save Data\(error)")
+//                }
+//            }, deselect: { (asset: PHAsset) -> Void in
+//                // User deselected an assets.
+//                // Do something, cancel upload?
+//            }, cancel: { (assets: [PHAsset]) -> Void in
+//                // User cancelled. And this where the assets currently selected.
+//            }, finish: { (var assets: [PHAsset]) -> Void in
+//                assets.removeAll()
+//            }, completion: nil)
     }
+    
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
         //self.photoImage.image = image
         let imagesss = image
+        print(image)
         let app = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = app.managedObjectContext
         let entity = NSEntityDescription.entityForName("Photos", inManagedObjectContext: context)!
