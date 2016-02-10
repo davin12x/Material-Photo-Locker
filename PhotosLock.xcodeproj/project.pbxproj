@@ -20,6 +20,7 @@
 		0AB473E31C686A4400CB3D0D /* showVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E21C686A4400CB3D0D /* showVC.swift */; };
 		0AB473E61C6870F400CB3D0D /* Photos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E41C6870F400CB3D0D /* Photos+CoreDataProperties.swift */; };
 		0AB473E71C6870F400CB3D0D /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E51C6870F400CB3D0D /* Photos.swift */; };
+		0AB473E91C695AA100CB3D0D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E81C695AA100CB3D0D /* DetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		0AB473E21C686A4400CB3D0D /* showVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showVC.swift; sourceTree = "<group>"; };
 		0AB473E41C6870F400CB3D0D /* Photos+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photos+CoreDataProperties.swift"; path = "../Photos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0AB473E51C6870F400CB3D0D /* Photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photos.swift; path = ../Photos.swift; sourceTree = "<group>"; };
+		0AB473E81C695AA100CB3D0D /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				0AB473BA1C666FB900CB3D0D /* AppDelegate.swift */,
 				0AB473BC1C666FB900CB3D0D /* ViewController.swift */,
 				0AB473E21C686A4400CB3D0D /* showVC.swift */,
+				0AB473E81C695AA100CB3D0D /* DetailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 			files = (
 				0AB473E11C68688100CB3D0D /* showCell.swift in Sources */,
 				0AB473C31C666FBA00CB3D0D /* PhotosLock.xcdatamodeld in Sources */,
+				0AB473E91C695AA100CB3D0D /* DetailVC.swift in Sources */,
 				0AB473D21C66845E00CB3D0D /* KeychainWrapper.m in Sources */,
 				0AB473E31C686A4400CB3D0D /* showVC.swift in Sources */,
 				0AB473D41C6688D200CB3D0D /* MaterialView.swift in Sources */,
