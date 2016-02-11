@@ -73,12 +73,12 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
               
                 let cell = collectionView.cellForItemAtIndexPath(indexPath)
                 if cell?.selected == true{
-                    cell?.layer.borderWidth = 4.0
-                    cell?.layer.borderColor = UIColor.greenColor().CGColor
-                }
-                else{
-                    cell?.layer.borderColor = UIColor.clearColor().CGColor
+                    if ((cell?.layer.backgroundColor = UIColor.greenColor().CGColor) == nil){
+                            cell?.layer.borderColor = UIColor.clearColor().CGColor
                     }
+                    cell?.layer.borderWidth = 2.0
+                    cell?.layer.borderColor = UIColor.blueColor().CGColor
+                }
             }else{
                 collectionView.reloadItemsAtIndexPaths([indexPath])
                 performSegueWithIdentifier("DetailVC", sender:photo)
@@ -207,7 +207,7 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         didFinishSavingWithError error:NSError!,
         contextInfo:UnsafePointer<Void>)
     {
-        // process success/failure here
+        print("Success Saving image")
     }
     @IBAction func onAddPressed(sender: AnyObject) {
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
@@ -231,8 +231,7 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
                                     do{
                                         try context.save()
                                         self.imageCounter++
-                                        
-                                    }catch { let err = error as? NSError
+                                    }catch {
                                         print("could not save Data\(error)")
                                     }
                     
