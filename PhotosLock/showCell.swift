@@ -14,6 +14,8 @@ class showCell: UICollectionViewCell {
     
     func configureCell(photo:Photos){
        photoImage.image = photo.getImage()
+        
+         
     }
     
     

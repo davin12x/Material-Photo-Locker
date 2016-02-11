@@ -15,16 +15,17 @@ import DKImagePickerController
 
 class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var collection : UICollectionView!
-    let vc = BSImagePickerViewController()
     let pickerController = DKImagePickerController()
-    public var fullScreenImage: UIImage?
     internal var selectedAssets = [DKAsset]()
     
+    @IBOutlet weak var Activate: UIButton!
     var imagePicker = UIImagePickerController()
     var photos = [Photos]()
     var saveValue = [Int]()
     var clearImageData = 0
     var imageCounter = 0
+    var isActivate = false
+    var delPhotos = [UIImage]()
    //@IBOutlet weak var photoImage :UIImageView!
     
     override func viewDidLoad() {
@@ -49,6 +50,8 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         do{
             let result = try context.executeFetchRequest(fetchRequest)
             self.photos = result as! [Photos]
+            
+            
         }catch let err as NSError{
             print(err.description)
         }
@@ -63,23 +66,27 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
             return showCell()
         }
     }
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    
+        func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+            let photo = photos[indexPath.row]
+            if buttonChecker() == true{
+              
+                let cell = collectionView.cellForItemAtIndexPath(indexPath)
+                if cell?.selected == true{
+                    cell?.layer.borderWidth = 4.0
+                    cell?.layer.borderColor = UIColor.greenColor().CGColor
+                }
+                else{
+                    cell?.layer.borderColor = UIColor.clearColor().CGColor
+                    }
+            }else{
+                collectionView.reloadItemsAtIndexPaths([indexPath])
+                performSegueWithIdentifier("DetailVC", sender:photo)
+            }
         
         
-        let photo = photos[indexPath.row]
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        if cell?.selected == true{
-            cell?.layer.borderWidth = 4.0
-             cell?.layer.borderColor = UIColor.greenColor().CGColor
+        
         }
-        else{
-            cell?.layer.borderColor = UIColor.clearColor().CGColor
-        }
-        
-       // collectionView.reloadItemsAtIndexPaths([indexPath])
-       // performSegueWithIdentifier("DetailVC", sender:photo)
-        
-    }
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if cell?.selected == false{
@@ -87,7 +94,37 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         }
         
     }
-
+    func Toggle()->Int{
+        if Activate.tag == 0{
+           return 1
+        }
+        else{
+            return 0
+        }
+    }
+    
+    @IBAction func onEditButtonPressed(sender: AnyObject) {
+        
+        
+        let tag = Toggle()
+        Activate.tag = tag
+        if Activate.tag == 1{
+            Activate.setTitle("Unselect", forState: .Normal)
+        }
+        else{
+            Activate.setTitle("Select", forState: .Normal)
+        }
+        
+    }
+    func buttonChecker()->Bool{
+      
+        if Activate.tag == 1 {
+            
+            return true
+        }
+        
+        return false
+    }
 
   
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -104,6 +141,7 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     func OnDelPressed(){
        
         let selectedItem = self.collection.indexPathsForSelectedItems()
+        
         print(selectedItem?.count)
         deleteItemsAtIndexPaths(selectedItem!)
         
@@ -130,7 +168,24 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
             let app = UIApplication.sharedApplication().delegate as! AppDelegate
             let context = app.managedObjectContext
             print (values)
-            let photo = photos[values] as NSManagedObject
+            let photo = photos[values]
+            let vk:Photos = photo
+            let img = photo.getImage()
+            
+            //let data = UIImageJPEGRepresentation(photo, 1.0)
+            //////////////////////
+            
+            
+            
+           
+                UIImageWriteToSavedPhotosAlbum(
+                    img,
+                    self,
+                    Selector("image:didFinishSavingWithError:contextInfo:"),
+                    nil)
+            
+           
+            ////////////////
             context.deleteObject(photo)
             do{
                 
@@ -147,7 +202,13 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         }
     }
     
-   
+    func image(
+        image: UIImage!,
+        didFinishSavingWithError error:NSError!,
+        contextInfo:UnsafePointer<Void>)
+    {
+        // process success/failure here
+    }
     @IBAction func onAddPressed(sender: AnyObject) {
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             print("didSelectAssets")
@@ -178,66 +239,11 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
                 })
             }
         }
-        
         self.presentViewController(pickerController, animated: true) {}
-//       //presentViewController(imagePicker, animated: true, completion: nil)
-//        bs_presentImagePickerController(vc, animated: true,
-//            select: { (asset: PHAsset) -> Void in
-//               
-//                let manager = PHImageManager.defaultManager()
-//                let option = PHImageRequestOptions()
-//                var thumbnail = UIImage()
-//                option.synchronous = true
-//                manager.requestImageForAsset(asset, targetSize: CGSize(width: 600.0, height: 600.0), contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
-//                    thumbnail = result!
-//                    print(thumbnail)
-//                })
-//                let imagesss = thumbnail
-//                let app = UIApplication.sharedApplication().delegate as! AppDelegate
-//                let context = app.managedObjectContext
-//                let entity = NSEntityDescription.entityForName("Photos", inManagedObjectContext: context)!
-//                let photos = Photos(entity:entity, insertIntoManagedObjectContext: context)
-//                photos.setPhotosImage(imagesss)
-//                context.insertObject(photos)
-//                do{
-//                    try context.save()
-//                    
-//                }catch { let err = error as? NSError
-//                    print("could not save Data\(error)")
-//                }
-//            }, deselect: { (asset: PHAsset) -> Void in
-//                // User deselected an assets.
-//                // Do something, cancel upload?
-//            }, cancel: { (assets: [PHAsset]) -> Void in
-//                // User cancelled. And this where the assets currently selected.
-//            }, finish: { (var assets: [PHAsset]) -> Void in
-//                assets.removeAll()
-//            }, completion: nil)
     }
     
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        
-        //self.photoImage.image = image
-        let imagesss = image
-        print(image)
-        let app = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = app.managedObjectContext
-        let entity = NSEntityDescription.entityForName("Photos", inManagedObjectContext: context)!
-        let photos = Photos(entity:entity, insertIntoManagedObjectContext: context)
-        photos.setPhotosImage(imagesss)
-        
-        context.insertObject(photos)
-        do{
-            try context.save()
-           
-        }catch{
-            print("could not save recepie")
-        }
-         collection.reloadData()
-        dismissViewControllerAnimated(true, completion: nil)
-        
-    }
+    
     
     @IBAction func onDelPressed(sender: AnyObject) {
         OnDelPressed()

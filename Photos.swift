@@ -15,13 +15,14 @@ class Photos: NSManagedObject {
 
     // Insert code here to add functionality to your managed object subclass    func setImage(img:UIImage){
     func setPhotosImage(img:UIImage){
-    let data = UIImagePNGRepresentation(img)
-    self.photoImage = data
+        let data = UIImagePNGRepresentation(img)
+        self.photoImage = data
     }
+    
     func getImage()->UIImage{
     let img = UIImage(data: self.photoImage!)
     return img!
-}   
+    }   
 
 
 }
