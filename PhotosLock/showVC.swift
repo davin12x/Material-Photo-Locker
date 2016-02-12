@@ -24,9 +24,9 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     var saveValue = [Int]()
     var clearImageData = 0
     var imageCounter = 0
-    var isActivate = false
     var delPhotos = [UIImage]()
    //@IBOutlet weak var photoImage :UIImageView!
+    @IBOutlet weak var trashButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +34,20 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         collection.delegate = self
         collection.dataSource = self
         imagePicker.delegate = self
-        
+        trashButton.hidden = true
+        trashButton.center.x = self.view.frame.width + 30
+        pickerController.assetGroupTypes = [.SmartAlbumScreenshots]
+    
         
     }
     override func viewDidAppear(animated: Bool) {
         fetchAndSetResult()
         collection.reloadData()
+        
     
         
     }
+    
     func fetchAndSetResult(){
        let app = UIApplication.sharedApplication().delegate as! AppDelegate
         let context = app.managedObjectContext
@@ -61,27 +66,38 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         if let cell = collection.dequeueReusableCellWithReuseIdentifier("photos", forIndexPath: indexPath) as? showCell{
             let photo = photos[indexPath.row]
             cell.configureCell(photo)
+            cell.layer.borderColor = UIColor.clearColor().CGColor
             return cell
         }else{
             return showCell()
         }
     }
-    
+    func cellCount()->Int{
+         let cellCount =  self.collection.indexPathsForSelectedItems()!.count
+        return cellCount
+    }
         func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
             let photo = photos[indexPath.row]
+            let cell = collectionView.cellForItemAtIndexPath(indexPath)
             if buttonChecker() == true{
-              
-                let cell = collectionView.cellForItemAtIndexPath(indexPath)
+                
                 if cell?.selected == true{
-                    if ((cell?.layer.backgroundColor = UIColor.greenColor().CGColor) == nil){
-                            cell?.layer.borderColor = UIColor.clearColor().CGColor
-                    }
+                  
+                    
                     cell?.layer.borderWidth = 2.0
                     cell?.layer.borderColor = UIColor.blueColor().CGColor
+                    view.makeToast(message: "\(cellCount()) Item selected")
+                   
                 }
+
             }else{
-                collectionView.reloadItemsAtIndexPaths([indexPath])
-                performSegueWithIdentifier("DetailVC", sender:photo)
+                UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options:UIViewAnimationOptions.TransitionFlipFromBottom, animations: { () -> Void in
+                    cell?.frame = collectionView.bounds
+                    }, completion: { (finished:Bool) -> Void in
+                        collectionView.reloadItemsAtIndexPaths([indexPath])
+                        self.performSegueWithIdentifier("DetailVC", sender:photo)
+                })
+                
             }
         
         
@@ -91,6 +107,7 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if cell?.selected == false{
                 cell?.layer.borderColor = UIColor.clearColor().CGColor
+                view.makeToast(message: "\(cellCount()) Item selected")
         }
         
     }
@@ -102,17 +119,29 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
             return 0
         }
     }
+    func animatedTrash(position:Int){
+        UIView.animateWithDuration(5.0, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 10, options:UIViewAnimationOptions.TransitionFlipFromBottom, animations: { () -> Void in
+            
+            self.trashButton.center.x = self.view.frame.width / position
+            }, completion: { (finished:Bool) -> Void in
+                
+        })
+    
+    }
     
     @IBAction func onEditButtonPressed(sender: AnyObject) {
         
-        
+       
         let tag = Toggle()
         Activate.tag = tag
+        print(Activate.tag)
         if Activate.tag == 1{
-            Activate.setTitle("Unselect", forState: .Normal)
+            self.trashButton.hidden = false
+            animatedTrash(2)
         }
         else{
-            Activate.setTitle("Select", forState: .Normal)
+            animatedTrash(10)
+            trashButton.hidden = true
         }
         
     }
@@ -136,15 +165,19 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         return 1
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 104, height: 97)
+        return CGSize(width: 113, height: 113)
     }
     func OnDelPressed(){
-       
+       animatedTrash(2)
         let selectedItem = self.collection.indexPathsForSelectedItems()
-        
-        print(selectedItem?.count)
-        deleteItemsAtIndexPaths(selectedItem!)
-        
+         print(selectedItem?.count)
+        if selectedItem?.count >= 1{
+          
+            deleteItemsAtIndexPaths(selectedItem!)
+            
+            
+        }else{
+            view.makeToast(message: "0 item selected")}
     }
   
     func appendValue(getValue:[Int])->[Int]{
@@ -169,23 +202,21 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
             let context = app.managedObjectContext
             print (values)
             let photo = photos[values]
-            let vk:Photos = photo
             let img = photo.getImage()
             
-            //let data = UIImageJPEGRepresentation(photo, 1.0)
-            //////////////////////
+         
             
             
+        
+           
+//                UIImageWriteToSavedPhotosAlbum(
+//                    img,
+//                    self,
+//                    Selector("image:didFinishSavingWithError:contextInfo:"),
+//                    nil)
             
            
-                UIImageWriteToSavedPhotosAlbum(
-                    img,
-                    self,
-                    Selector("image:didFinishSavingWithError:contextInfo:"),
-                    nil)
-            
-           
-            ////////////////
+          
             context.deleteObject(photo)
             do{
                 
@@ -210,12 +241,14 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         print("Success Saving image")
     }
     @IBAction func onAddPressed(sender: AnyObject) {
+        
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             print("didSelectAssets")
             print(assets)
             self.imageCounter = 0
             self.pickerController.allowMultipleTypes = false
             self.pickerController.allowsLandscape = false
+            self.pickerController.sourceType = .Camera
             var orignalImages :[UIImage] = []
             for asset in assets{
                 asset.fetchFullScreenImageWithCompleteBlock({ (image, info) -> Void in
@@ -231,16 +264,18 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
                                     do{
                                         try context.save()
                                         self.imageCounter++
+                                        self.pickerController.defaultSelectedAssets = nil
                                     }catch {
                                         print("could not save Data\(error)")
                                     }
+                    
                     
                 })
             }
         }
         self.presentViewController(pickerController, animated: true) {}
     }
-    
+   
     
     
     

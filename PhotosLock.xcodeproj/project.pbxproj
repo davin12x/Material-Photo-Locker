@@ -21,6 +21,7 @@
 		0AB473E61C6870F400CB3D0D /* Photos+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E41C6870F400CB3D0D /* Photos+CoreDataProperties.swift */; };
 		0AB473E71C6870F400CB3D0D /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E51C6870F400CB3D0D /* Photos.swift */; };
 		0AB473E91C695AA100CB3D0D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E81C695AA100CB3D0D /* DetailVC.swift */; };
+		0AB473EB1C6CFEB100CB3D0D /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473EA1C6CFEAF00CB3D0D /* HRToast+UIView.swift */; };
 		B2C82CF485E88023255DBC36 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0BA65B28F5C673BD7FAB24 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		0AB473E41C6870F400CB3D0D /* Photos+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Photos+CoreDataProperties.swift"; path = "../Photos+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0AB473E51C6870F400CB3D0D /* Photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photos.swift; path = ../Photos.swift; sourceTree = "<group>"; };
 		0AB473E81C695AA100CB3D0D /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		0AB473EA1C6CFEAF00CB3D0D /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
 		1E0BA65B28F5C673BD7FAB24 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85546A962C238117621810D0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D82FA1FC63A44B6CD10B9CBE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		0AB473B91C666FB900CB3D0D /* PhotosLock */ = {
 			isa = PBXGroup;
 			children = (
+				0AB473EA1C6CFEAF00CB3D0D /* HRToast+UIView.swift */,
 				0AB473D91C6863AD00CB3D0D /* Controller */,
 				0AB473D81C6863A600CB3D0D /* View */,
 				0AB473D71C6863A000CB3D0D /* Model */,
@@ -273,6 +276,7 @@
 				0AB473D41C6688D200CB3D0D /* MaterialView.swift in Sources */,
 				0AB473BD1C666FB900CB3D0D /* ViewController.swift in Sources */,
 				0AB473BB1C666FB900CB3D0D /* AppDelegate.swift in Sources */,
+				0AB473EB1C6CFEB100CB3D0D /* HRToast+UIView.swift in Sources */,
 				0AB473D61C6689DC00CB3D0D /* Constant.swift in Sources */,
 				0AB473E71C6870F400CB3D0D /* Photos.swift in Sources */,
 				0AB473E61C6870F400CB3D0D /* Photos+CoreDataProperties.swift in Sources */,
