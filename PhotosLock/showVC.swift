@@ -36,7 +36,7 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         imagePicker.delegate = self
         trashButton.hidden = true
         trashButton.center.x = self.view.frame.width + 30
-        pickerController.assetGroupTypes = [.SmartAlbumScreenshots]
+        pickerController.assetType = .AllPhotos
     
         
     }
