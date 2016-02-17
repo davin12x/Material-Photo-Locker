@@ -38,7 +38,7 @@ let HRToastImageViewWidth :  CGFloat  = 80.0
 let HRToastImageViewHeight:  CGFloat  = 80.0
 
 // label setting
-let HRToastMaxWidth       :  CGFloat  = 0.8;      // 80% of parent view width
+let HRToastMaxWidth       :  CGFloat  = 0.5;      // 80% of parent view width
 let HRToastMaxHeight      :  CGFloat  = 0.8;
 let HRToastFontSize       :  CGFloat  = 16.0
 let HRToastMaxTitleLines              = 0
@@ -305,7 +305,7 @@ extension UIView {
             if position.lowercaseString == HRToastPositionTop {
                 return CGPointMake(viewSize.width/2, toastSize.height/2 + HRToastVerticalMargin)
             } else if position.lowercaseString == HRToastPositionDefault {
-                return CGPointMake(viewSize.width/2, viewSize.height - toastSize.height/2 - HRToastVerticalMargin)
+                return CGPointMake(viewSize.width/2, viewSize.height - toastSize.height/0.60 - HRToastVerticalMargin)
             } else if position.lowercaseString == HRToastPositionCenter {
                 return CGPointMake(viewSize.width/2, viewSize.height/2)
             }

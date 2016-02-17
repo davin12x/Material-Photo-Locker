@@ -24,6 +24,21 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PhotoSlider-PhotoSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PhotoSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-PhotosLock.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +62,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>14ACDFE6022CD2E8F234C1E5F17F473E</key>
+		<key>175892047F5D57D69AC9D102FB92A2F2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,7 +72,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>40CFCF6DAE2462819BF53240663646C7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8AA3DDB8797222294E1288CB197A8347</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9781B2264FEE91DB3457A6CEA96C4B62</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A7715291CF8194C4497714EAD2BCD7E1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,7 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DB22B92DF7220B591CFE82C8D9675D74</key>
+		<key>CB7F3B11A5CF7682F51B34FDF2EEF986</key>
 		<dict>
 			<key>primary</key>
 			<true/>

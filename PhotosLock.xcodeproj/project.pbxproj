@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A520F001C7190ED00E7F7B1 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A520EFF1C7190ED00E7F7B1 /* iAd.framework */; };
+		0AB1E2941C73C6ED00EC0052 /* delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1E2931C73C6ED00EC0052 /* delete.wav */; };
+		0AB1E2961C73C8DE00EC0052 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1E2951C73C8DE00EC0052 /* click.mp3 */; };
+		0AB1E2981C73CB5900EC0052 /* add.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1E2971C73CB5900EC0052 /* add.wav */; };
+		0AB1E29A1C73CC0B00EC0052 /* select.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1E2991C73CC0B00EC0052 /* select.wav */; };
+		0AB1E29C1C73CDCD00EC0052 /* AddButton.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1E29B1C73CDCD00EC0052 /* AddButton.wav */; };
 		0AB473BB1C666FB900CB3D0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473BA1C666FB900CB3D0D /* AppDelegate.swift */; };
 		0AB473BD1C666FB900CB3D0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473BC1C666FB900CB3D0D /* ViewController.swift */; };
 		0AB473C01C666FB900CB3D0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AB473BE1C666FB900CB3D0D /* Main.storyboard */; };
@@ -26,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A520EFF1C7190ED00E7F7B1 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		0AB1E2931C73C6ED00EC0052 /* delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = delete.wav; sourceTree = "<group>"; };
+		0AB1E2951C73C8DE00EC0052 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		0AB1E2971C73CB5900EC0052 /* add.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = add.wav; sourceTree = "<group>"; };
+		0AB1E2991C73CC0B00EC0052 /* select.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = select.wav; sourceTree = "<group>"; };
+		0AB1E29B1C73CDCD00EC0052 /* AddButton.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AddButton.wav; sourceTree = "<group>"; };
 		0AB473B71C666FB900CB3D0D /* PhotosLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB473BA1C666FB900CB3D0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB473BC1C666FB900CB3D0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A520F001C7190ED00E7F7B1 /* iAd.framework in Frameworks */,
 				B2C82CF485E88023255DBC36 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +96,11 @@
 		0AB473B91C666FB900CB3D0D /* PhotosLock */ = {
 			isa = PBXGroup;
 			children = (
+				0AB1E2931C73C6ED00EC0052 /* delete.wav */,
+				0AB1E2971C73CB5900EC0052 /* add.wav */,
+				0AB1E2991C73CC0B00EC0052 /* select.wav */,
+				0AB1E29B1C73CDCD00EC0052 /* AddButton.wav */,
+				0AB1E2951C73C8DE00EC0052 /* click.mp3 */,
 				0AB473EA1C6CFEAF00CB3D0D /* HRToast+UIView.swift */,
 				0AB473D91C6863AD00CB3D0D /* Controller */,
 				0AB473D81C6863A600CB3D0D /* View */,
@@ -123,8 +141,8 @@
 			children = (
 				0AB473BA1C666FB900CB3D0D /* AppDelegate.swift */,
 				0AB473BC1C666FB900CB3D0D /* ViewController.swift */,
-				0AB473E21C686A4400CB3D0D /* showVC.swift */,
 				0AB473E81C695AA100CB3D0D /* DetailVC.swift */,
+				0AB473E21C686A4400CB3D0D /* showVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -141,6 +159,7 @@
 		D9FE0B1A381ED55894D19EFF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0A520EFF1C7190ED00E7F7B1 /* iAd.framework */,
 				1E0BA65B28F5C673BD7FAB24 /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -207,8 +226,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AB1E29A1C73CC0B00EC0052 /* select.wav in Resources */,
+				0AB1E2981C73CB5900EC0052 /* add.wav in Resources */,
 				0AB473C81C666FBA00CB3D0D /* LaunchScreen.storyboard in Resources */,
+				0AB1E2961C73C8DE00EC0052 /* click.mp3 in Resources */,
+				0AB1E2941C73C6ED00EC0052 /* delete.wav in Resources */,
 				0AB473C51C666FBA00CB3D0D /* Assets.xcassets in Resources */,
+				0AB1E29C1C73CDCD00EC0052 /* AddButton.wav in Resources */,
 				0AB473C01C666FB900CB3D0D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

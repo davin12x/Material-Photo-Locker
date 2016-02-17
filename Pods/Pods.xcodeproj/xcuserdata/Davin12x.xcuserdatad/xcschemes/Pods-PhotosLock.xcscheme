@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6E608DEFDFC0F985F3BC21AF'
+               BlueprintIdentifier = '31C8E6EF52CDA93C966E3230'
                BlueprintName = 'Pods-PhotosLock'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_PhotosLock.framework'>

@@ -2,8 +2,9 @@
 platform :ios, '8.0'
 # Uncomment this line if you're using Swift
 use_frameworks!
-pod "BSImagePicker", "~> 2.2"
+pod "PhotoSlider"
 pod “DKImagePickerController”
+pod "BSImagePicker", "~> 2.2"
 target 'PhotosLock' do
 
 end

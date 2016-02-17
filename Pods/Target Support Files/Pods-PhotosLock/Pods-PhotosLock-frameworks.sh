@@ -87,11 +87,15 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-PhotosLock/BSGridCollectionViewLayout.framework"
   install_framework "Pods-PhotosLock/BSImagePicker.framework"
   install_framework "Pods-PhotosLock/DKImagePickerController.framework"
+  install_framework "Pods-PhotosLock/Kingfisher.framework"
+  install_framework "Pods-PhotosLock/PhotoSlider.framework"
   install_framework "Pods-PhotosLock/UIImageViewModeScaleAspect.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PhotosLock/BSGridCollectionViewLayout.framework"
   install_framework "Pods-PhotosLock/BSImagePicker.framework"
   install_framework "Pods-PhotosLock/DKImagePickerController.framework"
+  install_framework "Pods-PhotosLock/Kingfisher.framework"
+  install_framework "Pods-PhotosLock/PhotoSlider.framework"
   install_framework "Pods-PhotosLock/UIImageViewModeScaleAspect.framework"
 fi
