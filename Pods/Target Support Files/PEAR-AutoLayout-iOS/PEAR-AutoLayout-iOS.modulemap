@@ -1,0 +1,6 @@
+framework module PEAR_AutoLayout_iOS {
+  umbrella header "PEAR-AutoLayout-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

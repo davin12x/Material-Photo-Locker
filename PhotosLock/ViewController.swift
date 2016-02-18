@@ -80,15 +80,6 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
                 NSLog("Successfully sent email!")
             }
         }
-//        let email = MFMailComposeViewController()
-//        email.mailComposeDelegate = self
-//        email.setSubject("Lost Password")
-//        email.setMessageBody("This is test", isHTML: false)
-//        presentViewController(email, animated: true, completion: nil)
-    
-    }
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func onButtonPressed(sender: AnyObject) {
         if passwordField.text! == "" {

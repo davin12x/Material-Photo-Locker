@@ -4,22 +4,42 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BSGridCollectionViewLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BSImagePicker-BSImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BSImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>DKImagePickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Kingfisher.xcscheme</key>
+		<key>ImageSlideshow-ImageSlideshow.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PhotoSlider-PhotoSlider.xcscheme</key>
+		<key>ImageSlideshow.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PhotoSlider.xcscheme</key>
+		<key>PEAR-AutoLayout-iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PEAR-ImageSlideViewer-iOS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,10 +54,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>UIImageViewModeScaleAspect.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>175892047F5D57D69AC9D102FB92A2F2</key>
+		<key>033DEFF9753A26B69E79EC83F53F17FC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0657BDC13AF90676D665A08071FAB46E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0FF38C485BD8E73F614C919F834D6EAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,22 +82,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>40CFCF6DAE2462819BF53240663646C7</key>
+		<key>3C6A643D5C440A146583E26FF97AEB8E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A7715291CF8194C4497714EAD2BCD7E1</key>
+		<key>8AA3DDB8797222294E1288CB197A8347</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C4C754CF0E2291BCBDE9E453220BC3C3</key>
+		<key>AAB4D040A2168D9A59AC0DB3DE0652F3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EB48933DBC095D773D0494CC9950F6DE</key>
+		<key>B14818B88D6F74842FE04D50379EF5CA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C59EE95662AD4757E7FCE220DB1AFA41</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF8C35FB1B0B0D5A6F0A0A855AEC0A8D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F7DE5171AA3C53DA4E4A078B795C78EE</key>
 		<dict>
 			<key>primary</key>
 			<true/>

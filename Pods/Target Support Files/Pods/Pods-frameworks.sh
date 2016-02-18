@@ -84,12 +84,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods/BSGridCollectionViewLayout.framework"
+  install_framework "Pods/BSImagePicker.framework"
   install_framework "Pods/DKImagePickerController.framework"
-  install_framework "Pods/Kingfisher.framework"
-  install_framework "Pods/PhotoSlider.framework"
+  install_framework "Pods/ImageSlideshow.framework"
+  install_framework "Pods/PEAR_AutoLayout_iOS.framework"
+  install_framework "Pods/PEAR_ImageSlideViewer_iOS.framework"
+  install_framework "Pods/UIImageViewModeScaleAspect.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods/BSGridCollectionViewLayout.framework"
+  install_framework "Pods/BSImagePicker.framework"
   install_framework "Pods/DKImagePickerController.framework"
-  install_framework "Pods/Kingfisher.framework"
-  install_framework "Pods/PhotoSlider.framework"
+  install_framework "Pods/ImageSlideshow.framework"
+  install_framework "Pods/PEAR_AutoLayout_iOS.framework"
+  install_framework "Pods/PEAR_ImageSlideViewer_iOS.framework"
+  install_framework "Pods/UIImageViewModeScaleAspect.framework"
 fi

@@ -549,10 +549,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="508"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojq-kq-cxG">
-                                        <rect key="frame" x="0.0" y="33" width="375" height="467"/>
+                                        <rect key="frame" x="0.0" y="33" width="375" height="339"/>
                                     </imageView>
                                 </subviews>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="c2v-Zj-g4m">
+                                <rect key="frame" x="145" y="523" width="84" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="cZQ-Zj-BYx"/>
+                                </constraints>
+                            </pageControl>
                             <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zh0-TM-bn4">
                                 <rect key="frame" x="0.0" y="573" width="376" height="50"/>
                                 <constraints>
@@ -562,12 +568,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="c2v-Zj-g4m" firstAttribute="centerX" secondItem="VMD-F0-EhR" secondAttribute="centerX" id="4aN-iz-b5z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c2v-Zj-g4m" secondAttribute="trailing" id="EFD-1g-pgc"/>
                             <constraint firstItem="IEB-qG-f9N" firstAttribute="top" secondItem="Zh0-TM-bn4" secondAttribute="bottom" id="H5y-B5-Eqx"/>
+                            <constraint firstItem="Zh0-TM-bn4" firstAttribute="top" secondItem="c2v-Zj-g4m" secondAttribute="bottom" constant="13" id="PEM-23-PSz"/>
+                            <constraint firstItem="c2v-Zj-g4m" firstAttribute="leading" secondItem="VMD-F0-EhR" secondAttribute="leadingMargin" id="kZy-cT-vzD"/>
                             <constraint firstItem="S7a-SM-ane" firstAttribute="top" secondItem="jQ0-NZ-1fD" secondAttribute="bottom" id="rRB-zv-Fzc"/>
                             <constraint firstItem="Zh0-TM-bn4" firstAttribute="top" secondItem="S7a-SM-ane" secondAttribute="bottom" id="y6m-xO-W0o"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pageControl" destination="c2v-Zj-g4m" id="AAe-y5-KZ8"/>
                         <outlet property="scrollView" destination="S7a-SM-ane" id="QQC-Yy-pyc"/>
                     </connections>
                 </viewController>

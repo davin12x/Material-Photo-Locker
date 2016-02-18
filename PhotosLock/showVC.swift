@@ -38,7 +38,6 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     var sfxSelect:AVAudioPlayer!
     var sfxEdit:AVAudioPlayer!
     var sfxAdd:AVAudioPlayer!
-    
     @IBOutlet weak var trashButton: UIButton!
     
     @IBOutlet var toolBar: UIToolbar!
