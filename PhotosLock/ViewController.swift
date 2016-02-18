@@ -8,15 +8,25 @@
 
 import UIKit
 import LocalAuthentication
+import MessageUI
 
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
 
-   
+    private var _password:String!
     var context = LAContext()
     @IBOutlet weak var pressMe: UILabel!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var fingerprintLabel: UILabel!
+    @IBOutlet weak var emailAddress:UITextField!
+    var smtpSession = MCOSMTPSession()
+    
+    private var password:String{
+        _password = MykeychainWrapper.myObjectForKey("v_Data") as? String
+        return _password
+    }
+    
     let MykeychainWrapper = KeychainWrapper()
     
     override func viewDidLoad() {
@@ -26,12 +36,59 @@ class ViewController: UIViewController, UITextFieldDelegate {
         let hasLogin = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
         if hasLogin {
             passwordField.placeholder = "Enter Your Password"
+            confirmPasswordField.hidden = true
             pressMe.hidden = true
+            emailAddress.hidden = true
         }else{
             passwordField.placeholder = "Create Your Password"
+            confirmPasswordField.placeholder = "Confirm Password"
+            
             pressMe.hidden = false
         }
         
+    }
+    func getEmail()->String{
+        let email = NSUserDefaults.standardUserDefaults().valueForKey("email")
+        return email as! String
+    }
+    @IBAction func onForgetPressed(){
+        
+        smtpSession.hostname = "smtp.gmail.com"
+        smtpSession.username = "davin12x@gmail.com"
+        smtpSession.password = "ygzrgoedscmeinvu"
+        smtpSession.port = 465
+        smtpSession.authType = MCOAuthType.SASLPlain
+        smtpSession.connectionType = MCOConnectionType.TLS
+        smtpSession.connectionLogger = {(connectionID, type, data) in
+            if data != nil {
+                if let string = NSString(data: data, encoding: NSUTF8StringEncoding){
+                    NSLog("Connectionlogger: \(string)")
+                }
+            }
+        }
+        let builder = MCOMessageBuilder()
+        builder.header.to = [MCOAddress(displayName: "Photo Lock User", mailbox: getEmail())]
+        builder.header.from = MCOAddress(displayName: "Photo Lock", mailbox: getEmail())
+        builder.header.subject = "Password Recovery"
+        builder.htmlBody = "Your Password for Photo Lock is \(password)"
+        let rfc822Data = builder.data()
+        let sendOperation = smtpSession.sendOperationWithData(rfc822Data)
+        sendOperation.start { (error) -> Void in
+            if (error != nil) {
+                NSLog("Error sending email: \(error)")
+            } else {
+                NSLog("Successfully sent email!")
+            }
+        }
+//        let email = MFMailComposeViewController()
+//        email.mailComposeDelegate = self
+//        email.setSubject("Lost Password")
+//        email.setMessageBody("This is test", isHTML: false)
+//        presentViewController(email, animated: true, completion: nil)
+    
+    }
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func onButtonPressed(sender: AnyObject) {
         if passwordField.text! == "" {
@@ -42,25 +99,45 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(alertView, animated: true, completion: nil)
             
         }
+        else if passwordField.placeholder == "Create Your Password"{
+            if passwordField.text == confirmPasswordField.text{
+                MykeychainWrapper.mySetObject(passwordField.text, forKey: kSecValueData)
+                MykeychainWrapper.writeToKeychain()
+                NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoginKey")
+                NSUserDefaults.standardUserDefaults().setValue(emailAddress.text, forKey: "email")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                performSegueWithIdentifier("login", sender: self)
+            }
+            else{
+                view.makeToast(message: "Confirm password do not match")
+                passwordField.text = ""
+                confirmPasswordField.text = ""
+            }
+        }
         else if checkLogin(passwordField.text!){
+            passwordField.placeholder = ""
             performSegueWithIdentifier("login", sender: nil)
         }
-        else if passwordField.placeholder == "Create Your Password"{
-            MykeychainWrapper.mySetObject(passwordField.text, forKey: kSecValueData)
-            MykeychainWrapper.writeToKeychain()
-            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoginKey")
-            NSUserDefaults.standardUserDefaults().synchronize()
-            performSegueWithIdentifier("login", sender: self)
-        }
         passwordField.text = ""
-        passwordField.placeholder = "Wrong Password"
+        
     }
-    func checkLogin(password:String)->Bool{
-        if password == MykeychainWrapper.myObjectForKey("v_Data") as? String{
+    func checkHint(hint:String)->Bool{
+        if hint == MykeychainWrapper.myObjectForKey("v_Data") as? String{
             return true
         }
         else{
             return false
+        }
+    }
+    func checkLogin(password:String)->Bool{
+        if password == MykeychainWrapper.myObjectForKey("v_Data") as? String{
+            passwordField.placeholder = ""
+            return true
+        }
+        else{
+            passwordField.placeholder = "Wrong Password"
+            return false
+            
         }
     }
     func touchId(){

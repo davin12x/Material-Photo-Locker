@@ -4,7 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 pod "PhotoSlider"
 pod “DKImagePickerController”
-pod "BSImagePicker", "~> 2.2"
+pod "mailcore2-ios"
 target 'PhotosLock' do
 
 end
