@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
 
     private var _password:String!
     var context = LAContext()
+    var WrongPassCount = 0
     @IBOutlet weak var pressMe: UILabel!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
@@ -22,16 +23,13 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
     @IBOutlet weak var emailAddress:UITextField!
     var smtpSession = MCOSMTPSession()
     
-    private var password:String{
-        _password = MykeychainWrapper.myObjectForKey("v_Data") as? String
-        return _password
-    }
     
     let MykeychainWrapper = KeychainWrapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordField.delegate = self
+        confirmPasswordField.delegate = self
         touchId()
         let hasLogin = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
         if hasLogin {
@@ -51,36 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
         let email = NSUserDefaults.standardUserDefaults().valueForKey("email")
         return email as! String
     }
-    @IBAction func onForgetPressed(){
-        
-        smtpSession.hostname = "smtp.gmail.com"
-        smtpSession.username = "davin12x@gmail.com"
-        smtpSession.password = "ygzrgoedscmeinvu"
-        smtpSession.port = 465
-        smtpSession.authType = MCOAuthType.SASLPlain
-        smtpSession.connectionType = MCOConnectionType.TLS
-        smtpSession.connectionLogger = {(connectionID, type, data) in
-            if data != nil {
-                if let string = NSString(data: data, encoding: NSUTF8StringEncoding){
-                    NSLog("Connectionlogger: \(string)")
-                }
-            }
-        }
-        let builder = MCOMessageBuilder()
-        builder.header.to = [MCOAddress(displayName: "Photo Lock User", mailbox: getEmail())]
-        builder.header.from = MCOAddress(displayName: "Photo Lock", mailbox: getEmail())
-        builder.header.subject = "Password Recovery"
-        builder.htmlBody = "Your Password for Photo Lock is \(password)"
-        let rfc822Data = builder.data()
-        let sendOperation = smtpSession.sendOperationWithData(rfc822Data)
-        sendOperation.start { (error) -> Void in
-            if (error != nil) {
-                NSLog("Error sending email: \(error)")
-            } else {
-                NSLog("Successfully sent email!")
-            }
-        }
-    }
+   
     @IBAction func onButtonPressed(sender: AnyObject) {
         if passwordField.text! == "" {
             let alertView = UIAlertController(title: "Login Problem",
@@ -120,16 +89,66 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
             return false
         }
     }
+    private var orignalPassword:String{
+        _password = MykeychainWrapper.myObjectForKey("v_Data") as? String
+        print(_password)
+        return _password
+    }
     func checkLogin(password:String)->Bool{
         if password == MykeychainWrapper.myObjectForKey("v_Data") as? String{
             passwordField.placeholder = ""
             return true
         }
         else{
+            ++WrongPassCount
+            if WrongPassCount == 5{
+                smtpSession.hostname = "smtp.gmail.com"
+                smtpSession.username = "davin12x@gmail.com"
+                smtpSession.password = "ygzrgoedscmeinvu"
+                smtpSession.port = 465
+                smtpSession.authType = MCOAuthType.SASLPlain
+                smtpSession.connectionType = MCOConnectionType.TLS
+                smtpSession.connectionLogger = {(connectionID, type, data) in
+                    if data != nil {
+                        if let string = NSString(data: data, encoding: NSUTF8StringEncoding){
+                            NSLog("Connectionlogger: \(string)")
+                        }
+                    }
+                }
+                let builder = MCOMessageBuilder()
+                builder.header.to = [MCOAddress(displayName: "Photo Lock User", mailbox: getEmail())]
+                builder.header.from = MCOAddress(displayName: "Photo Lock", mailbox: getEmail())
+                builder.header.subject = "Password Recovery"
+                builder.htmlBody = "Your Password for Photo Lock is \(orignalPassword)"
+                let rfc822Data = builder.data()
+                self.WrongPassCount = 0
+                let sendOperation = smtpSession.sendOperationWithData(rfc822Data)
+                sendOperation.start { (error) -> Void in
+                    if (error != nil) {
+                        NSLog("Error sending email: \(error)")
+                        let alert = UIAlertController(title: "Password send failed", message: "Check Your Internet Connection", preferredStyle: UIAlertControllerStyle.Alert)
+                        let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+                        alert.addAction(action)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        
+                    } else {
+                        NSLog("Successfully sent email!")
+                        
+                        let alert = UIAlertController(title: "Successfull", message: "Password sent to your email", preferredStyle: UIAlertControllerStyle.Alert)
+                        let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+                        alert.addAction(action)
+                        self.presentViewController(alert, animated: true, completion: nil)
+                        
+                    }
+                }
+            }
             passwordField.placeholder = "Wrong Password"
             return false
             
         }
+    }
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
     }
     func touchId(){
         if context.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error:nil) {

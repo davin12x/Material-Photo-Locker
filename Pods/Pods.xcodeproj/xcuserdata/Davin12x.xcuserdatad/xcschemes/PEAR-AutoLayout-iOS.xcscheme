@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'C2CC33C9A9F8E304563930A1'
+               BlueprintIdentifier = '04FEA38A874FD64E6561C216'
                BlueprintName = 'PEAR-AutoLayout-iOS'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PEAR_AutoLayout_iOS.framework'>

@@ -191,6 +191,7 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
                         
                 })
                 self.performSegueWithIdentifier("DetailVC", sender:photo)
+               // self.performSegueWithIdentifier("PageItemVC", sender:photo)
             }
         
         
@@ -266,8 +267,20 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 111, height: 110)
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+//        
+//        
+//        return CGSize(width: 60, height: 60)
+//    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if let layout = collection.collectionViewLayout as? UICollectionViewFlowLayout {
+            let itemWidth = view.bounds.width / 3.5
+            let itemHeight = layout.itemSize.height
+            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+            layout.invalidateLayout()
+        }
     }
     func OnDelPressed(){
        animatedTrash(2)
@@ -411,6 +424,14 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
             if let detailvc = segue.destinationViewController as? DetailVC{
                 if let photos = sender as? Photos{
                     detailvc.photo = photos
+                    detailvc.photoinarray = self.photos
+                    detailvc.indexPathOfSelectedImage = self.indexPathOfSelectedImage
+                }
+            }
+        }
+        else if segue.identifier == "PageItemVC"{
+            if let detailvc = segue.destinationViewController as? PageItemVC{
+                if let photos = sender as? Photos{
                     detailvc.photoinarray = self.photos
                     detailvc.indexPathOfSelectedImage = self.indexPathOfSelectedImage
                 }

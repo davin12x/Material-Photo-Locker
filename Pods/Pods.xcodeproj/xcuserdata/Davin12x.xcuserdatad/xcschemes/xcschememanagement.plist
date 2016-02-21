@@ -24,12 +24,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ImageSlideshow-ImageSlideshow.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>ImageSlideshow.xcscheme</key>
+		<key>MVCarouselCollectionView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,11 +57,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>033DEFF9753A26B69E79EC83F53F17FC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>0657BDC13AF90676D665A08071FAB46E</key>
 		<dict>
 			<key>primary</key>
@@ -87,17 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>5D9255903438193278DB81EFC88A61AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8AA3DDB8797222294E1288CB197A8347</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AAB4D040A2168D9A59AC0DB3DE0652F3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B14818B88D6F74842FE04D50379EF5CA</key>
+		<key>91FE4E3C2B90A6C6498F0F88505EB14A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,7 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DF8C35FB1B0B0D5A6F0A0A855AEC0A8D</key>
+		<key>F2043DECF9739DC07ED16E074A80DC90</key>
 		<dict>
 			<key>primary</key>
 			<true/>

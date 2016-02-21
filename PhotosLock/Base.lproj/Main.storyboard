@@ -25,18 +25,18 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="448" id="ewE-lE-ZBJ"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xe6-0j-JGc">
-                                    <size key="itemSize" width="113" height="101"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Fzg-Yz-dBA">
+                                    <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photos" id="0we-t1-VgB" customClass="showCell" customModule="PhotosLock" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="64" width="113" height="101"/>
+                                        <rect key="frame" x="0.0" y="64" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="113" height="101"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Lock-icon-1" translatesAutoresizingMaskIntoConstraints="NO" id="i1c-5h-P2Q">
@@ -340,11 +340,12 @@
                         <outlet property="toolBar" destination="fdU-Ge-87e" id="Sho-FK-evn"/>
                         <outlet property="trashButton" destination="bBK-ox-NtT" id="XWX-VF-y9H"/>
                         <segue destination="EqA-94-eFo" kind="show" identifier="DetailVC" id="8OE-lb-2t2"/>
+                        <segue destination="baa-jJ-fXF" kind="show" identifier="PageItemVC" id="XVs-Sa-xVp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dk-y2-GNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233.5" y="282.5"/>
+            <point key="canvasLocation" x="732.5" y="234.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -362,10 +363,10 @@
                                 <rect key="frame" x="25" y="31" width="550" height="535"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CQG-2v-3QU">
-                                        <rect key="frame" x="155" y="0.0" width="240" height="127"/>
+                                        <rect key="frame" x="155" y="0.0" width="240" height="139"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d4-ln-Fyp">
-                                                <rect key="frame" x="0.0" y="0.0" width="128" height="127"/>
+                                                <rect key="frame" x="0.0" y="5" width="128" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="ath-HP-qee"/>
                                                     <constraint firstAttribute="height" constant="90" id="bKT-ym-J6n"/>
@@ -382,7 +383,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;-- Press me " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Ce6-ul-hFO">
-                                                <rect key="frame" x="128" y="53" width="112" height="21"/>
+                                                <rect key="frame" x="128" y="59" width="112" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="Klv-Vq-UZt"/>
                                                 </constraints>
@@ -393,13 +394,13 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo Lock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k58-Nj-o9V">
-                                        <rect key="frame" x="226" y="141" width="98" height="27"/>
+                                        <rect key="frame" x="226" y="153" width="98" height="29"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="19"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JGD-xo-hmo" customClass="MaterialView" customModule="PhotosLock" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="182" width="540" height="40"/>
+                                        <rect key="frame" x="5" y="196" width="540" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="AxM-0G-nm8"/>
                                             <constraint firstAttribute="width" constant="251" id="FWA-5k-9Ov"/>
@@ -415,32 +416,23 @@
                                         </variation>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0T2-lt-lQw" customClass="MaterialView" customModule="PhotosLock" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="236" width="540" height="40"/>
+                                        <rect key="frame" x="5" y="250" width="540" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="S4N-Km-vhN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Aa-xe-Elu">
-                                        <rect key="frame" x="5" y="290" width="540" height="40"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Aa-xe-Elu" customClass="MaterialView" customModule="PhotosLock" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="304" width="540" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="PkL-bo-Nk3"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yiT-eQ-ZuQ">
-                                        <rect key="frame" x="252" y="344" width="46" height="30"/>
-                                        <state key="normal" title="Button">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onForgetPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="KAB-Gf-Bl4"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use finger ID to unlock" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylL-hy-mCD">
-                                        <rect key="frame" x="175" y="388" width="201" height="83"/>
+                                        <rect key="frame" x="175" y="358" width="201" height="113"/>
                                         <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -522,6 +514,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="buB-Bv-9N8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.2156862745" green="0.72156862749999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -531,7 +524,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qe9-BZ-cDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="691" y="-225"/>
+            <point key="canvasLocation" x="691" y="-1361"/>
         </scene>
         <!--DetailVC-->
         <scene sceneID="npN-sQ-Vw4">
@@ -544,47 +537,52 @@
                     <view key="view" contentMode="scaleToFill" id="VMD-F0-EhR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7a-SM-ane">
-                                <rect key="frame" x="0.0" y="64" width="375" height="508"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ojq-kq-cxG">
-                                        <rect key="frame" x="0.0" y="33" width="375" height="339"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="c2v-Zj-g4m">
-                                <rect key="frame" x="145" y="523" width="84" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="cZQ-Zj-BYx"/>
-                                </constraints>
-                            </pageControl>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zh0-TM-bn4">
-                                <rect key="frame" x="0.0" y="573" width="376" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="sxx-Rh-pTO"/>
-                                </constraints>
-                            </adBannerView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="c2v-Zj-g4m" firstAttribute="centerX" secondItem="VMD-F0-EhR" secondAttribute="centerX" id="4aN-iz-b5z"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="c2v-Zj-g4m" secondAttribute="trailing" id="EFD-1g-pgc"/>
-                            <constraint firstItem="IEB-qG-f9N" firstAttribute="top" secondItem="Zh0-TM-bn4" secondAttribute="bottom" id="H5y-B5-Eqx"/>
-                            <constraint firstItem="Zh0-TM-bn4" firstAttribute="top" secondItem="c2v-Zj-g4m" secondAttribute="bottom" constant="13" id="PEM-23-PSz"/>
-                            <constraint firstItem="c2v-Zj-g4m" firstAttribute="leading" secondItem="VMD-F0-EhR" secondAttribute="leadingMargin" id="kZy-cT-vzD"/>
-                            <constraint firstItem="S7a-SM-ane" firstAttribute="top" secondItem="jQ0-NZ-1fD" secondAttribute="bottom" id="rRB-zv-Fzc"/>
-                            <constraint firstItem="Zh0-TM-bn4" firstAttribute="top" secondItem="S7a-SM-ane" secondAttribute="bottom" id="y6m-xO-W0o"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="pageControl" destination="c2v-Zj-g4m" id="AAe-y5-KZ8"/>
-                        <outlet property="scrollView" destination="S7a-SM-ane" id="QQC-Yy-pyc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ygh-fO-ZqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="309.5" y="613.5"/>
+            <point key="canvasLocation" x="175.5" y="794.5"/>
+        </scene>
+        <!--Page ItemVC-->
+        <scene sceneID="tC5-xZ-bUN">
+            <objects>
+                <viewController storyboardIdentifier="PageItemController" id="baa-jJ-fXF" customClass="PageItemVC" customModule="PhotosLock" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rU9-Fo-miU"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tuu-F1-hcC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lcA-jk-9ZO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="UEA-Hu-bZY">
+                                <rect key="frame" x="154" y="587" width="67" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itN-Dy-sWF">
+                                <rect key="frame" x="0.0" y="0.0" width="376" height="670"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UEA-Hu-bZY" firstAttribute="centerX" secondItem="lcA-jk-9ZO" secondAttribute="centerX" id="3c6-cA-ETe"/>
+                            <constraint firstItem="Tuu-F1-hcC" firstAttribute="top" secondItem="UEA-Hu-bZY" secondAttribute="bottom" constant="43" id="U3y-0b-h5x"/>
+                            <constraint firstItem="itN-Dy-sWF" firstAttribute="leading" secondItem="lcA-jk-9ZO" secondAttribute="leading" id="jZs-Dq-5BR"/>
+                            <constraint firstAttribute="trailing" secondItem="itN-Dy-sWF" secondAttribute="trailing" id="knL-1k-Vd2"/>
+                            <constraint firstAttribute="bottom" secondItem="itN-Dy-sWF" secondAttribute="bottom" id="p05-Os-DaB"/>
+                            <constraint firstItem="itN-Dy-sWF" firstAttribute="top" secondItem="lcA-jk-9ZO" secondAttribute="top" id="qE7-8D-WVI"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="pageControl" destination="UEA-Hu-bZY" id="hG3-r5-sXB"/>
+                        <outlet property="scrollView" destination="itN-Dy-sWF" id="6Mr-aM-RgW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pr3-4E-mQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747.5" y="1582.5"/>
         </scene>
     </scenes>
     <resources>

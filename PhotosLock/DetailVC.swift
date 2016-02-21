@@ -8,188 +8,324 @@
 
 import UIKit
 import PhotoSlider
+import ImageSlideshow
 
 class DetailVC: UIViewController, UIScrollViewDelegate {
     
-    @IBOutlet weak var scrollView:UIScrollView!
-    @IBOutlet weak var pageControl:UIPageControl?
+    //@IBOutlet weak var imageScrollView :UIScrollView!
+
     var photo:Photos!
     var photoinarray = [Photos]()
     var indexPathOfSelectedImage : [Int]?
-    var imageView: UIImageView!
-    let width: CGFloat = 375
-    let height : CGFloat = 339
-    var pageViews: [UIImageView?] = []
-    
-    override func viewDidLoad() {
-        scrollView.delegate = self
-        super.viewDidLoad()
-        scrollView.backgroundColor = UIColor.blackColor()
-        scrollView.bounces = false
-        scrollView.alwaysBounceVertical = false
-        scrollView.flashScrollIndicators()
-        let scrollViewWidth = self.scrollView.frame.width
-        let scrollViewHeight = self.scrollView.frame.height
-        let contentOffsetWidth = scrollViewWidth * CGFloat(indexPathOfSelectedImage![0])
-        let contentOffsetHeight = scrollViewHeight * CGFloat(indexPathOfSelectedImage![0])
-        let imageCount = photoinarray.count
+    let width:CGFloat = 375
+    let height:CGFloat = 339
+    var imageView:UIImageView!
+        var pageImages:[UIImage] = [UIImage]()
+        var pageViews:[UIView?] = [UIView]()
+        var mainScrollView: UIScrollView!
+        var pageScrollViews:[UIScrollView?] = [UIScrollView]()
+        var currentPageView: UIView!
+        var pageControl : UIPageControl = UIPageControl() //frame: CGRectMake(50, 300, 200, 50))
+        let viewForZoomTag = 1
+        var initOnTouch:Bool = true
+        var mainScrollViewContentSize: CGSize!
         
-        pageControl!.currentPage = 0
-        pageControl!.numberOfPages = imageCount
-        
-        for _ in 0..<imageCount {
-            pageViews.append(nil)
+        override func viewDidLoad() {
+            
+            super.viewDidLoad()
+            
+            
+            mainScrollView = UIScrollView(frame: self.view.bounds)
+            mainScrollView.pagingEnabled = true
+            mainScrollView.showsHorizontalScrollIndicator = false
+            mainScrollView.showsVerticalScrollIndicator = false
+            pageScrollViews = [UIScrollView?](count: photoinarray.count, repeatedValue: nil)
+            let innerScrollFrame = mainScrollView.bounds
+            mainScrollView.contentSize =
+                CGSizeMake(innerScrollFrame.origin.x + innerScrollFrame.size.width,
+                    mainScrollView.bounds.size.height)
+            print(mainScrollView.contentSize)
+            
+            mainScrollView.backgroundColor = UIColor.blackColor()
+            mainScrollView.delegate = self
+            self.view.addSubview(mainScrollView)
+            configScrollView()
+            addPageControlOnScrollView()
+            print("\(__FUNCTION__) mainScrollView.contentSize = \(mainScrollView.contentSize)")
+            
+            
         }
-        let pagesScrollViewSize = scrollView.frame.size
-        scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(photoinarray.count),
-            height: pagesScrollViewSize.height)
-        loadVisiblePages()
+        
+        override func viewWillAppear(animated: Bool) {
+            loadVisiblePages()
+            mainScrollView.setContentOffset(CGPoint(x: 376 * CGFloat(indexPathOfSelectedImage![0]), y: 12), animated: true)
+        }
         
         
-//        for var i = 0 ; i < photoinarray.count; ++i {
-//            let oneImage = photoinarray[i].getImage()
-//             imageView = UIImageView(image: photoinarray[i].getImage())
-//            scrollView.addSubview(imageView)
-//            //imageView.frame = CGRect(x:(scrollViewWidth * CGFloat(i)), y: 15, width: scrollViewWidth, height: scrollViewHeight)
-//            imageView.frame = CGRect(origin: CGPoint(x: scrollViewWidth * CGFloat(i), y: 15), size: oneImage.size)
-//            view.addSubview(scrollView)
-//            scrollView.contentSize = oneImage.size
-//        }
-        //scrollView.contentSize = CGSizeMake(scrollViewWidth * CGFloat(photoinarray.count), scrollViewHeight)
         
-        scrollView.setContentOffset(CGPoint(x: contentOffsetWidth, y: contentOffsetHeight), animated: true)
+        func configScrollView() {
+            print("\(__FUNCTION__)")
+            self.mainScrollView.contentSize = CGSizeMake(self.mainScrollView.frame.width * CGFloat(photoinarray.count),
+                self.mainScrollView.frame.height)
+            mainScrollViewContentSize = mainScrollView.contentSize
+            print("fullContentSize=\(mainScrollViewContentSize)")
+            print("\(__FUNCTION__) self.scrollView.contentSize \(self.mainScrollView.contentSize)")
+        }
         
-      
-        var doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
-        doubleTapRecognizer.numberOfTapsRequired = 2
-        doubleTapRecognizer.numberOfTouchesRequired = 1
-        scrollView.addGestureRecognizer(doubleTapRecognizer)
         
-        //4
-        let scrollViewFrame = scrollView.frame
-        let scaleWidth = scrollViewFrame.size.width / scrollView.contentSize.width
-        let scaleheight = scrollViewFrame.size.height / scrollView.contentSize.height
-        let minScale = min(scaleheight, scaleWidth)
-        scrollView.minimumZoomScale = minScale
-        scrollView.maximumZoomScale = 1.0
-        scrollView.zoomScale = minScale;
-        //centerScrollViewContents()
+        func addPageControlOnScrollView() {
+            
+            print("\(__FUNCTION__)")
+            self.pageControl.numberOfPages = photoinarray.count
+            self.pageControl.currentPage = 0
+            self.pageControl.tintColor = UIColor.redColor()
+            self.pageControl.pageIndicatorTintColor = UIColor.whiteColor()
+            self.pageControl.currentPageIndicatorTintColor = UIColor.greenColor()
+            pageControl.addTarget(self, action: Selector("changePage:"), forControlEvents: UIControlEvents.ValueChanged)
+            self.pageControl.frame = CGRectMake(0, self.view.frame.maxY - 44, self.view.frame.width, 44)
+            self.view.addSubview(pageControl)
+        }
+        
+        
+        // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
+        func changePage(sender: AnyObject) -> () {
+            
+            NSLog("\(__FUNCTION__)")
+            
+            let x = CGFloat(pageControl.currentPage) * mainScrollView.frame.size.width
+            mainScrollView.setContentOffset(CGPointMake(x, 0), animated: true)
+            loadVisiblePages()
+            currentPageView = pageScrollViews[pageControl.currentPage]
+            
+            
+        }
+        func getViewAtPage(page: Int) -> UIView! {
+            let imageForZooming = UIImageView(image: photoinarray[page].getImage())
+    
+            var innerScrollFrame = mainScrollView.bounds
+            if page < photoinarray.count {
+                innerScrollFrame.origin.x = innerScrollFrame.size.width * CGFloat(page)
+            }
+            imageForZooming.tag = viewForZoomTag
+            let pageScrollView = UIScrollView(frame: innerScrollFrame)
+            pageScrollView.contentSize = imageForZooming.bounds.size
+            pageScrollView.delegate = self
+            pageScrollView.showsVerticalScrollIndicator = false
+            pageScrollView.showsHorizontalScrollIndicator = false
+            pageScrollView.addSubview(imageForZooming)
+            return pageScrollView
+        }
+    
+        func setZoomScale(scrollView: UIScrollView) {
+            
+            let imageView = scrollView.viewWithTag(self.viewForZoomTag)
 
-    }
-    func loadPage(page: Int) {
-        if page < 0 || page >= photoinarray.count {
-            // If it's outside the range of what you have to display, then do nothing
-            return
-        }
-        
-        // 1
-        if let pageView = pageViews[page] {
-            // Do nothing. The view is already loaded.
-        } else {
-            // 2
-            var frame = scrollView.bounds
-            frame.origin.x = frame.size.width * CGFloat(page)
-            frame.origin.y = 0.0
+            let imageViewSize = imageView!.bounds.size
+            let scrollViewSize = scrollView.bounds.size
+            let widthScale = scrollViewSize.width / imageViewSize.width
+            let heightScale = scrollViewSize.height / imageViewSize.height
             
-            // 3
-            let newPageView = UIImageView(image: photoinarray[page].getImage())
-            newPageView.contentMode = .ScaleAspectFit
-            newPageView.frame = frame
-            scrollView.addSubview(newPageView)
+            scrollView.minimumZoomScale = min(widthScale, heightScale)
+            scrollView.zoomScale = scrollView.minimumZoomScale
+        }
+        
+        
+        func loadVisiblePages() {
+            var currentPage :Int
+            if initOnTouch == true{
+                currentPage = indexPathOfSelectedImage![0]
+                initOnTouch = false
+            }else{
+                currentPage = pageControl.currentPage
+            }
             
-            // 4
-            pageViews[page] = newPageView
-        }
-    }
-    func purgePage(page: Int) {
-        if page < 0 || page >= photoinarray.count {
-            // If it's outside the range of what you have to display, then do nothing
-            return
-        }
-        
-        // Remove a page from the scroll view and reset the container array
-        if let pageView = pageViews[page] {
-            pageView.removeFromSuperview()
-            pageViews[page] = nil
-        }
-    }
-    func loadVisiblePages() {
-        // First, determine which page is currently visible
-        let pageWidth = scrollView.frame.size.width
-        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
-        
-        // Update the page control
-        pageControl!.currentPage = page
-        
-        // Work out which pages you want to load
-        let firstPage = page - 1
-        let lastPage = page + 1
-        
-        // Purge anything before the first page
-        for var index = 0; index < firstPage; ++index {
-            purgePage(index)
+            
+            let previousPage =  currentPage > 0 ? currentPage - 1 : 0
+            let nextPage = currentPage + 1 > pageControl.numberOfPages ? currentPage : currentPage + 1
+            for page in 0..<previousPage {
+                purgePage(page)
+            }
+            
+            for var page = nextPage + 1; page < pageControl.numberOfPages; page = page + 1 {
+                purgePage(page)
+            }
+            
+            for var page = previousPage; page <= nextPage; page++ {
+                //Initial value is zero
+                loadPage(page)
+            }
+            
         }
         
-        // Load pages in our range
-        for index in firstPage...lastPage {
-            loadPage(index)
+        
+        
+        func loadPage(page: Int) {
+            
+            if page < 0 || page >= pageControl.numberOfPages {
+                return
+            }
+            
+            // 1
+            if let pageScrollView = pageScrollViews[page] {
+                // Do nothing. The view is already loaded.
+                
+                //            print("\(__FUNCTION__) \(page) existed, call setZoomScale.")
+                
+                setZoomScale(pageScrollView)
+                
+            }
+            else {
+                let pageScrollView = getViewAtPage(page) as! UIScrollView
+                setZoomScale(pageScrollView)
+                mainScrollView.addSubview(pageScrollView)
+                pageScrollViews[page] = pageScrollView
+              
+            }
+            
         }
         
-        // Purge anything after the last page
-        for var index = lastPage+1; index < photoinarray.count; ++index {
-            purgePage(index)
+        
+        func purgePage(page: Int) {
+            
+            //        print("\(__FUNCTION__) \(page)")
+            
+            if page < 0 || page >= pageScrollViews.count {
+                
+                //            print("\(__FUNCTION__) \(page) abort.")
+                
+                return
+            }
+            
+            //        print("\(__FUNCTION__) \(page) try...")
+            
+            if let pageView = pageScrollViews[page] {
+                
+                //            print("\(__FUNCTION__) \(page) done!")
+                
+                pageView.removeFromSuperview()
+                pageScrollViews[page] = nil
+            }
+            else {
+                
+                //            print("\(__FUNCTION__) \(page) nil, ignore.")
+                
+            }
+            
         }
-    }
-//    func centerScrollViewContents() {
-//        let boundsSize = scrollView.bounds.size
-//        var contentsFrame = imageView.frame
-//        
-//        if contentsFrame.size.width < boundsSize.width {
-//            contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0
-//        } else {
-//            contentsFrame.origin.x = 0.0
-//        }
-//        
-//        if contentsFrame.size.height < boundsSize.height {
-//            contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0
-//        } else {
-//            contentsFrame.origin.y = 0.0
-//        }
-//        
-//        imageView.frame = contentsFrame
-//    }
-    func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {
-        // 1
-        let pointInView = recognizer.locationInView(imageView)
         
-        // 2
-        var newZoomScale = scrollView.zoomScale * 1.5
-        newZoomScale = min(newZoomScale, scrollView.maximumZoomScale)
         
-        // 3
-        let scrollViewSize = scrollView.bounds.size
-        let w = scrollViewSize.width / newZoomScale
-        let h = scrollViewSize.height / newZoomScale
-        let x = pointInView.x - (w / 2.0)
-        let y = pointInView.y - (h / 2.0)
+        func centerScrollViewContents(scrollView: UIScrollView) {
+            
+            let imageView = scrollView.viewWithTag(self.viewForZoomTag)
+            let imageViewSize = imageView!.frame.size
+            
+            let scrollViewSize = scrollView.bounds.size
+            
+            let verticalPadding = imageViewSize.height < scrollViewSize.height ?
+                (scrollViewSize.height - imageViewSize.height) / 2 : 0
+            
+            let horizontalPadding = imageViewSize.width < scrollViewSize.width ?
+                (scrollViewSize.width - imageViewSize.width) / 2 : 0
+            
+            scrollView.contentInset = UIEdgeInsets(
+                top: verticalPadding,
+                left: horizontalPadding,
+                bottom: verticalPadding,
+                right: horizontalPadding)
+        }
         
-        let rectToZoomTo = CGRectMake(x, y, w, h);
         
-        // 4
-        scrollView.zoomToRect(rectToZoomTo, animated: true)
+        
+        func scrollViewDidZoom(scrollView: UIScrollView) {
+            centerScrollViewContents(scrollView)
+        }
+        
+        
+        func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+            return scrollView.viewWithTag(viewForZoomTag)
+            
+            
+        }
+        func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+            print("\(__FUNCTION__)")
+        }
+        
+        func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+            print("\(__FUNCTION__)")
+        }
+        
+        func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+            print("\(__FUNCTION__)")
+        }
+        
+        
+        func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+            
+            print("\(__FUNCTION__)")
+            
+            let targetOffset = targetContentOffset.memory.x
+            print(" TargetOffset: \(targetOffset)")
+            
+            print(" pageControl.currentPage = \(pageControl.currentPage)")
+            print(" scrollView.zoomScale = \(scrollView.zoomScale)")
+            print(" scrollView.contentSize = \(scrollView.contentSize)")
+            
+            print(" scrollView.contentSize.height=\(scrollView.contentSize.height)")
+            print(" mainScrollViewContentSize.height=\(mainScrollViewContentSize.height)")
+            
+            let zoomRatio = scrollView.contentSize.height / mainScrollViewContentSize.height
+            
+            print(" ratio=\(zoomRatio)")
+            
+            if zoomRatio == 1 {
+                // mainScrollViewController
+                
+                print("\n mainScrollViewController")
+                //        print(scrollView.contentSize.width / targetOffset)
+                
+                //        print("pageControl.numberOfPages=\(pageControl.numberOfPages)")
+                //        print("pageControl.currentPage=\(pageControl.currentPage)")
+                
+                let mainScrollViewWidthPerPage = mainScrollViewContentSize.width / CGFloat(pageControl.numberOfPages)
+                
+                print(" mainScrollViewWidthPerPage = \(mainScrollViewWidthPerPage)")
+                
+                print(" zoomed mainScrollViewWidthPerPage = \(mainScrollViewWidthPerPage * zoomRatio)")
+                
+                
+                let currentPage = targetOffset / (mainScrollViewWidthPerPage * zoomRatio)
+                
+                print(" currentPage=\(currentPage)")
+                
+                
+                pageControl.currentPage = Int(currentPage)
+                
+                loadVisiblePages()
+                
+                
+                
+            }
+            else {
+                // pageScorllViewController
+                
+                print("\n pageScorllViewController")
+                
+                let mainScrollViewWidthPerPage = mainScrollViewContentSize.width / CGFloat(pageControl.numberOfPages)
+                
+                print(" mainScrollViewWidthPerPage = \(mainScrollViewWidthPerPage)")
+                
+                print(" zoomed mainScrollViewWidthPerPage = \(mainScrollViewWidthPerPage * zoomRatio)")
+                
+                
+                let currentPage = targetOffset / (mainScrollViewWidthPerPage * zoomRatio)
+                
+                print(" currentPage=\(currentPage)")
+                
+            }
+            
+            
+            
     }
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-    func scrollViewDidZoom(scrollView: UIScrollView) {
-       // centerScrollViewContents()
-    }
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-        loadVisiblePages()
-    }
- 
-    
-    
 
     
 }

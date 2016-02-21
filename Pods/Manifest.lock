@@ -8,10 +8,8 @@ PODS:
     - DKImagePickerController/ImageManager (= 3.0.10)
   - DKImagePickerController/Camera (3.0.10)
   - DKImagePickerController/ImageManager (3.0.10)
-  - ImageSlideshow (0.2.3):
-    - ImageSlideshow/Core (= 0.2.3)
-  - ImageSlideshow/Core (0.2.3)
   - mailcore2-ios (0.6.3)
+  - MVCarouselCollectionView (1.0.9)
   - PEAR-AutoLayout-iOS (0.0.3)
   - PEAR-ImageSlideViewer-iOS (0.1.1):
     - PEAR-AutoLayout-iOS
@@ -20,16 +18,16 @@ PODS:
 DEPENDENCIES:
   - BSImagePicker (~> 2.2)
   - DKImagePickerController
-  - ImageSlideshow (~> 0.2.3)
   - mailcore2-ios
+  - MVCarouselCollectionView
   - PEAR-ImageSlideViewer-iOS
 
 SPEC CHECKSUMS:
   BSGridCollectionViewLayout: 60f542a260887148f9f4db1fc0e637e3d560df91
   BSImagePicker: 99c38db9ead99229d1dd4d09e6d5a707328405a5
   DKImagePickerController: d95106cdabfb8661e7378bfaab1dd26fdf1ece31
-  ImageSlideshow: 2895e62777c2ea36f56d948723b3586a12a89756
   mailcore2-ios: c4bea2efd276f6f300b4386c70f6460487fa1b76
+  MVCarouselCollectionView: 45b31730d7424a6d9dde3d5fa8f794efefea37f9
   PEAR-AutoLayout-iOS: 5486f08f5b918b43b48f5a6dd364a2f00e514c00
   PEAR-ImageSlideViewer-iOS: 0f23ff7df19e1d26a29ac63458c76fa39450e6e1
   UIImageViewModeScaleAspect: ec78901acfc20d3782154111a21d34390f8f71ad
