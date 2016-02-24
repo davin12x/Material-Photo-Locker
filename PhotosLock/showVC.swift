@@ -419,6 +419,10 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         
 
     }
+    @IBAction func onSettingpressed(sender: AnyObject) {
+        sfxSelect.play()
+        self.performSegueWithIdentifier("setting", sender: nil)
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "DetailVC"{
             if let detailvc = segue.destinationViewController as? DetailVC{
@@ -429,13 +433,6 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
                 }
             }
         }
-        else if segue.identifier == "PageItemVC"{
-            if let detailvc = segue.destinationViewController as? PageItemVC{
-                if let photos = sender as? Photos{
-                    detailvc.photoinarray = self.photos
-                    detailvc.indexPathOfSelectedImage = self.indexPathOfSelectedImage
-                }
-            }
-        }
+     
     }
 }

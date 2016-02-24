@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'FA5A9061EAECA08BCD64B3B8'
-               BlueprintName = 'PEAR-AutoLayout-iOS'
+               BlueprintIdentifier = '5806F5C4B8C92EB1B865F349'
+               BlueprintName = 'WYMaterialButton'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'PEAR_AutoLayout_iOS.framework'>
+               BuildableName = 'WYMaterialButton.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

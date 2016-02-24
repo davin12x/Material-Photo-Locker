@@ -230,10 +230,10 @@
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
-                                            <barButtonItem width="95" style="plain" systemItem="fixedSpace" id="Tir-T8-8NU"/>
+                                            <barButtonItem width="47" style="plain" systemItem="fixedSpace" id="Tir-T8-8NU"/>
                                             <barButtonItem style="plain" id="k4C-La-eXE">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ft0-QY-B4b">
-                                                    <rect key="frame" x="175" y="4" width="36" height="36"/>
+                                                    <rect key="frame" x="127" y="4" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="ic_select_all_36pt">
                                                         <color key="titleColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -243,10 +243,21 @@
                                                     </connections>
                                                 </button>
                                             </barButtonItem>
-                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="vPy-DM-eIF"/>
+                                            <barButtonItem width="55" style="plain" systemItem="fixedSpace" id="cC8-1J-yFZ"/>
+                                            <barButtonItem style="plain" id="vyU-qF-e8H">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Psi-e2-bJf">
+                                                    <rect key="frame" x="228" y="10" width="40" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="ic_settings"/>
+                                                    <connections>
+                                                        <action selector="onSettingpressed:" destination="ghS-Bz-y2D" eventType="touchUpInside" id="4oX-z6-Wmg"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                            <barButtonItem width="61" style="plain" systemItem="fixedSpace" id="YVD-wp-aSj"/>
                                             <barButtonItem style="plain" id="fFB-L4-Kht">
                                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="bBK-ox-NtT">
-                                                    <rect key="frame" x="313" y="-5" width="54" height="54"/>
+                                                    <rect key="frame" x="339" y="-5" width="54" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="54" id="No5-Se-s6X"/>
@@ -275,7 +286,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.96078431372549022" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="XBd-fr-SW7" firstAttribute="top" secondItem="xwb-qb-xC4" secondAttribute="bottom" id="2Sh-fj-BIF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FMy-8j-uol" secondAttribute="trailing" constant="1" id="2zN-0b-4vH"/>
@@ -340,7 +351,7 @@
                         <outlet property="toolBar" destination="fdU-Ge-87e" id="Sho-FK-evn"/>
                         <outlet property="trashButton" destination="bBK-ox-NtT" id="XWX-VF-y9H"/>
                         <segue destination="EqA-94-eFo" kind="show" identifier="DetailVC" id="8OE-lb-2t2"/>
-                        <segue destination="baa-jJ-fXF" kind="show" identifier="PageItemVC" id="XVs-Sa-xVp"/>
+                        <segue destination="3rx-Xp-yX0" kind="show" identifier="setting" id="V1z-Ut-Cfv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4dk-y2-GNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -467,7 +478,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.21568627450980393" green="0.72156862745098038" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.40000000000000002" green="0.73333333333333328" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="gid-ja-QEY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="5" id="05q-VJ-iQI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gid-ja-QEY" secondAttribute="bottom" constant="40" id="5rx-Gd-Qx3"/>
@@ -488,24 +499,6 @@
             </objects>
             <point key="canvasLocation" x="-340" y="332"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="bnj-za-OLN">
-            <objects>
-                <viewController id="gMf-ml-tz8" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7l3-F1-PPh"/>
-                        <viewControllerLayoutGuide type="bottom" id="VIU-Dv-1hN"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Zsh-al-G8z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f0j-Yr-HIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-475" y="1011"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="8mC-GJ-YAW">
             <objects>
@@ -515,7 +508,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.2156862745" green="0.72156862749999995" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.29803921568627451" green="0.68627450980392157" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -544,45 +537,211 @@
             </objects>
             <point key="canvasLocation" x="175.5" y="794.5"/>
         </scene>
-        <!--Page ItemVC-->
-        <scene sceneID="tC5-xZ-bUN">
+        <!--Settings-->
+        <scene sceneID="K41-pZ-E1R">
             <objects>
-                <viewController storyboardIdentifier="PageItemController" id="baa-jJ-fXF" customClass="PageItemVC" customModule="PhotosLock" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" id="3rx-Xp-yX0" customClass="Settings" customModule="PhotosLock" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="rU9-Fo-miU"/>
-                        <viewControllerLayoutGuide type="bottom" id="Tuu-F1-hcC"/>
+                        <viewControllerLayoutGuide type="top" id="RiH-KH-ZNT"/>
+                        <viewControllerLayoutGuide type="bottom" id="UY2-Vf-n69"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lcA-jk-9ZO">
+                    <view key="view" contentMode="scaleToFill" id="ULr-XD-CFy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="UEA-Hu-bZY">
-                                <rect key="frame" x="154" y="587" width="67" height="37"/>
-                                <color key="pageIndicatorTintColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                            </pageControl>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" pagingEnabled="YES" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itN-Dy-sWF">
-                                <rect key="frame" x="0.0" y="0.0" width="376" height="670"/>
-                            </scrollView>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOI-tP-Bqg">
+                                <rect key="frame" x="20" y="573" width="320" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="vRH-m0-PPL"/>
+                                </constraints>
+                            </adBannerView>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" alignment="center" spacing="38" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQo-pS-NyN">
+                                <rect key="frame" x="20" y="72" width="323" height="483"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tP-z1-dJe" customClass="WYMaterialButton" customModule="WYMaterialButton">
+                                        <rect key="frame" x="94" y="0.0" width="135" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="YrG-hH-whQ"/>
+                                            <constraint firstAttribute="width" constant="135" id="aFD-mv-ONi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="15"/>
+                                        <state key="normal" title="Change Email">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
+                                                <color key="value" red="0.17254901959999999" green="0.37647058820000001" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.69999999999999996"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animation" value="zoomin"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onEmailPressed:" destination="3rx-Xp-yX0" eventType="touchUpInside" id="MlY-gm-iTL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNN-0w-zjx" customClass="WYMaterialButton" customModule="WYMaterialButton">
+                                        <rect key="frame" x="94" y="50" width="135" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="0pg-a2-lyW"/>
+                                            <constraint firstAttribute="width" constant="135" id="fH5-qd-3YG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="15"/>
+                                        <state key="normal" title="Change Password">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
+                                                <color key="value" red="0.17254901959999999" green="0.37647058820000001" blue="0.61568627450000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.69999999999999996"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onPasswordPressed:" destination="3rx-Xp-yX0" eventType="touchUpInside" id="baz-Lw-d5w"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Email Address" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emC-W4-cx0">
+                                        <rect key="frame" x="0.0" y="94" width="323" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKP-aU-2kH">
+                                        <rect key="frame" x="0.0" y="366" width="323" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3z-qb-W5x">
+                                        <rect key="frame" x="0.0" y="404" width="323" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QC-s0-kUd" customClass="WYMaterialButton" customModule="WYMaterialButton">
+                                        <rect key="frame" x="122" y="448" width="80" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="59Y-3e-DEC"/>
+                                            <constraint firstAttribute="width" constant="80" id="E92-3k-70S"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="15"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="materialColor">
+                                                <color key="value" red="0.96078431369999995" green="0.21960784310000001" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="11"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                <real key="value" value="0.69999999999999996"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOffsetY">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="autostart" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="autohide" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animation" value="zoomin"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="delay">
+                                                <real key="value" value="0.29999999999999999"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="-1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="x">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="y">
+                                                <real key="value" value="9"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="onSavePressed:" destination="3rx-Xp-yX0" eventType="touchUpInside" id="8BI-Yh-nUq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="H3z-qb-W5x" firstAttribute="leading" secondItem="WQo-pS-NyN" secondAttribute="leading" id="Ggy-Ky-EWa"/>
+                                    <constraint firstAttribute="trailing" secondItem="H3z-qb-W5x" secondAttribute="trailing" id="JEt-7i-bNK"/>
+                                    <constraint firstAttribute="trailing" secondItem="eKP-aU-2kH" secondAttribute="trailing" id="LZ7-Vb-f3x"/>
+                                    <constraint firstItem="emC-W4-cx0" firstAttribute="leading" secondItem="WQo-pS-NyN" secondAttribute="leading" id="UCm-Wu-CD1"/>
+                                    <constraint firstItem="eKP-aU-2kH" firstAttribute="leading" secondItem="WQo-pS-NyN" secondAttribute="leading" id="clD-aa-nEA"/>
+                                    <constraint firstAttribute="trailing" secondItem="emC-W4-cx0" secondAttribute="trailing" id="ta4-Jd-cVl"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90980392156862744" green="0.96078431372549022" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="UEA-Hu-bZY" firstAttribute="centerX" secondItem="lcA-jk-9ZO" secondAttribute="centerX" id="3c6-cA-ETe"/>
-                            <constraint firstItem="Tuu-F1-hcC" firstAttribute="top" secondItem="UEA-Hu-bZY" secondAttribute="bottom" constant="43" id="U3y-0b-h5x"/>
-                            <constraint firstItem="itN-Dy-sWF" firstAttribute="leading" secondItem="lcA-jk-9ZO" secondAttribute="leading" id="jZs-Dq-5BR"/>
-                            <constraint firstAttribute="trailing" secondItem="itN-Dy-sWF" secondAttribute="trailing" id="knL-1k-Vd2"/>
-                            <constraint firstAttribute="bottom" secondItem="itN-Dy-sWF" secondAttribute="bottom" id="p05-Os-DaB"/>
-                            <constraint firstItem="itN-Dy-sWF" firstAttribute="top" secondItem="lcA-jk-9ZO" secondAttribute="top" id="qE7-8D-WVI"/>
+                            <constraint firstItem="yOI-tP-Bqg" firstAttribute="top" secondItem="WQo-pS-NyN" secondAttribute="bottom" constant="10" id="35B-DL-4dF"/>
+                            <constraint firstItem="UY2-Vf-n69" firstAttribute="top" secondItem="yOI-tP-Bqg" secondAttribute="bottom" id="Euj-ot-sFh"/>
+                            <constraint firstItem="yOI-tP-Bqg" firstAttribute="centerX" secondItem="ULr-XD-CFy" secondAttribute="centerX" id="Pa2-gL-Yn0"/>
+                            <constraint firstItem="UY2-Vf-n69" firstAttribute="top" secondItem="WQo-pS-NyN" secondAttribute="bottom" constant="100" id="cyo-xJ-si7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WQo-pS-NyN" secondAttribute="trailing" constant="10" id="ogG-IP-Gyp"/>
+                            <constraint firstItem="WQo-pS-NyN" firstAttribute="leading" secondItem="ULr-XD-CFy" secondAttribute="leadingMargin" constant="10" id="pb4-G5-OQm"/>
+                            <constraint firstItem="WQo-pS-NyN" firstAttribute="top" secondItem="RiH-KH-ZNT" secondAttribute="bottom" id="xvW-RN-Vi9"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cyo-xJ-si7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="pageControl" destination="UEA-Hu-bZY" id="hG3-r5-sXB"/>
-                        <outlet property="scrollView" destination="itN-Dy-sWF" id="6Mr-aM-RgW"/>
+                        <outlet property="confirmPassField" destination="H3z-qb-W5x" id="y4m-zE-5X8"/>
+                        <outlet property="emailTextField" destination="emC-W4-cx0" id="VRN-Rm-XIb"/>
+                        <outlet property="passwordField" destination="eKP-aU-2kH" id="Xnh-Pc-SgV"/>
+                        <outlet property="save" destination="6QC-s0-kUd" id="75S-oL-FVw"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pr3-4E-mQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jMs-vL-MR9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747.5" y="1582.5"/>
+            <point key="canvasLocation" x="295.5" y="69.5"/>
         </scene>
     </scenes>
     <resources>
@@ -593,5 +752,6 @@
         <image name="ic_import_export" width="24" height="24"/>
         <image name="ic_mode_edit" width="24" height="24"/>
         <image name="ic_select_all_36pt" width="36" height="36"/>
+        <image name="ic_settings" width="24" height="24"/>
     </resources>
 </document>

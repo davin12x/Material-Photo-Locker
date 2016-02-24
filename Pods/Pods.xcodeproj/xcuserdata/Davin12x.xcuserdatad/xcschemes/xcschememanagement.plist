@@ -4,27 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>BSGridCollectionViewLayout.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>BSImagePicker-BSImagePicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>BSImagePicker.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>DKImagePickerController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>MVCarouselCollectionView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -49,7 +29,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>UIImageViewModeScaleAspect.xcscheme</key>
+		<key>WYMaterialButton-WYMaterialButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>WYMaterialButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,7 +47,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>0FF38C485BD8E73F614C919F834D6EAB</key>
+		<key>10FC9989980FAEC28F95AC5968880171</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,37 +57,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>32378149C6C439B393E5E428569C9622</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3C6A643D5C440A146583E26FF97AEB8E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5D9255903438193278DB81EFC88A61AF</key>
+		<key>80598C1B40C5CD842BE7C1CEB0C36260</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8AA3DDB8797222294E1288CB197A8347</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>91FE4E3C2B90A6C6498F0F88505EB14A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C59EE95662AD4757E7FCE220DB1AFA41</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F2043DECF9739DC07ED16E074A80DC90</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F7DE5171AA3C53DA4E4A078B795C78EE</key>
+		<key>A8642F530D7E0E2D35CA117EC21B0277</key>
 		<dict>
 			<key>primary</key>
 			<true/>
