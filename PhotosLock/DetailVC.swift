@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import PhotoSlider
-import ImageSlideshow
 
 class DetailVC: UIViewController, UIScrollViewDelegate {
     
@@ -58,7 +56,7 @@ class DetailVC: UIViewController, UIScrollViewDelegate {
         
         override func viewWillAppear(animated: Bool) {
             loadVisiblePages()
-            mainScrollView.setContentOffset(CGPoint(x: 376 * CGFloat(indexPathOfSelectedImage![0]), y: 12), animated: true)
+            mainScrollView.setContentOffset(CGPoint(x: mainScrollView.frame.size.width * CGFloat(indexPathOfSelectedImage![0]), y: 12), animated: true)
         }
         
         

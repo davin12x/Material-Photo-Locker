@@ -6,6 +6,7 @@ pod “DKImagePickerController”
 pod "mailcore2-ios"
 pod "WYMaterialButton"
 pod 'PEAR-ImageSlideViewer-iOS'
+pod "SwiftSpinner"
 target 'PhotosLock' do
 
 end

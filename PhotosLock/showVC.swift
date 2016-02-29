@@ -8,12 +8,11 @@
 
 import UIKit
 import CoreData
-import BSImagePicker
 import Photos
 import DKImagePickerController
 import iAd
 import AVFoundation
-import BSImagePicker
+import SwiftSpinner
 
 
 class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,UIImagePickerControllerDelegate, UINavigationControllerDelegate, ADBannerViewDelegate {
@@ -38,6 +37,9 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     var sfxSelect:AVAudioPlayer!
     var sfxEdit:AVAudioPlayer!
     var sfxAdd:AVAudioPlayer!
+    var orignalImages :[UIImage] = []
+    var isImageSaved = false
+    var phasset = PHAsset()
     @IBOutlet weak var trashButton: UIButton!
     
     @IBOutlet var toolBar: UIToolbar!
@@ -47,8 +49,6 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         self.canDisplayBannerAds = true
         self.IADBanner?.delegate = self
         self.IADBanner?.hidden = true
-        let vc = BSImagePickerViewController()
-        
         collection.allowsMultipleSelection = true
         collection.delegate = self
         collection.dataSource = self
@@ -56,6 +56,8 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         trashButton.hidden = true
         trashButton.center.x = self.view.frame.width + 30
         pickerController.assetType = .AllPhotos
+        pickerController.maxSelectableCount = 6
+        fetchAndSetResult()
         toolBar.hidden = true
         do{
             try sfxTrash = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("delete", ofType: "wav")!))
@@ -77,7 +79,6 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     }
     override func viewDidAppear(animated: Bool) {
         fetchAndSetResult()
-        collection.reloadData()
     }
     func bannerViewDidLoadAd(banner: ADBannerView!) {
         IADBanner?.hidden = false
@@ -169,18 +170,11 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
                 print([indexpath.row])
                 indexPathOfSelectedImage = [indexpath.row]
             }
-            
-            
             if buttonChecker() == true{
-                
                 if cell?.selected == true{
-                  
-                    
                     cell?.layer.borderWidth = 2.5
                     cell?.layer.borderColor = UIColor.orangeColor().CGColor
                     view.makeToast(message: "\(cellCount()) Item selected")
-                    
-                   
                 }
 
             }else{
@@ -191,7 +185,6 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
                         
                 })
                 self.performSegueWithIdentifier("DetailVC", sender:photo)
-               // self.performSegueWithIdentifier("PageItemVC", sender:photo)
             }
         
         
@@ -249,19 +242,15 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         
     }
     func buttonChecker()->Bool{
-      
         if Activate.tag == 1 {
-            
             return true
         }
-        
         return false
     }
 
   
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
-        
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -358,51 +347,76 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
          view.makeToast(message: "Items imported to Gallery")
     }
     @IBAction func onAddPressed(sender: AnyObject) {
-        self.sfxAdd.play()
+        //self.sfxAdd.play()
+       
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
-            self.imageCounter = 0
-            self.pickerController.allowMultipleTypes = false
-            self.pickerController.allowsLandscape = false
-            self.pickerController.sourceType = .Camera
-            var orignalImages :[UIImage] = []
-            for asset in assets{
-                let phasest =  asset.originalAsset
-                asset.fetchFullScreenImageWithCompleteBlock({ (image, info) -> Void in
-                    orignalImages.append(image!)
-                    if (phasest != nil) {
-                    let arrayToDelete = NSArray(object: phasest!)
-                    PHPhotoLibrary.sharedPhotoLibrary().performChanges( {
-                            PHAssetChangeRequest.deleteAssets(arrayToDelete)},
-                            completionHandler: {
-                                success, error in
-                                NSLog("Finished deleting asset. %@", (success ? "Success" : error!))
-                                
-                        }) 
-                    
+            SwiftSpinner.show("Importing Images ")
+            print("This is Assets: \(assets.count)")
+            
+             self.imageCounter = 0
+            dispatch_async(dispatch_get_global_queue(0, 0), {
+                let options = PHImageRequestOptions()
+                options.deliveryMode = .HighQualityFormat
+                options.synchronous = true
+                print("asset count \(assets.count)")
+                for (_, asset) in assets.enumerate() {
+                    asset.fetchImageWithSize(PHImageManagerMaximumSize, options: options) { image, info in
+                        self.orignalImages.append(image!)
                     }
-                    print(orignalImages.count)
-                    let imagesss = orignalImages[self.imageCounter]
-                                    let app = UIApplication.sharedApplication().delegate as! AppDelegate
-                                    let context = app.managedObjectContext
-                                    let entity = NSEntityDescription.entityForName("Photos", inManagedObjectContext: context)!
-                                    let photos = Photos(entity:entity, insertIntoManagedObjectContext: context)
-                                    photos.setPhotosImage(imagesss)
-                                    context.insertObject(photos)
-                                    do{
-                                        try context.save()
-                                        self.imageCounter++
-                                        self.pickerController.defaultSelectedAssets = nil
-                                    }catch {
-                                        print("could not save Data\(error)")
-                                    }
-                    
-                })
+                    print("Appending Orignal images count = \(self.orignalImages.count)")
+                     self.phasset =  asset.originalAsset!
+                     self.delPhoto()
+                }
                 
-            }
+              
+
+                if assets.count == self.orignalImages.count{
+                    self.savePhotos()
+                    print("Image saved")
+                    self.isImageSaved = true
+                    
+                    
+                }
+            })
+        
         }
+        self.orignalImages.removeAll()
+        self.pickerController.defaultSelectedAssets = nil
         self.presentViewController(pickerController, animated: true) {}
     }
-   
+    func savePhotos(){
+        for var photo = 0; photo < orignalImages.count ; ++photo{
+            let app = UIApplication.sharedApplication().delegate as! AppDelegate
+            let context = app.managedObjectContext
+            let entity = NSEntityDescription.entityForName("Photos", inManagedObjectContext: context)!
+            let photos = Photos(entity:entity, insertIntoManagedObjectContext: context)
+            photos.setPhotosImage(orignalImages[photo])
+            context.insertObject(photos)
+            do{
+                try context.save()
+               
+            }catch {
+                print("could not save Data\(error)")
+            }
+        }
+        
+        dispatch_async(dispatch_get_main_queue()){
+            self.fetchAndSetResult()
+            self.collection.reloadData()
+            SwiftSpinner.hide()
+        }
+        
+        
+    }
+    func delPhoto(){
+        let arrayToDelete = NSArray(object: self.phasset)
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges( {
+            PHAssetChangeRequest.deleteAssets(arrayToDelete)},
+            completionHandler: {
+                success, error in
+                NSLog("Finished deleting asset. %@", (success ? "Success" : error!))
+        })
+    }
     
     
     @IBAction func onDelPressed(sender: AnyObject) {
@@ -421,6 +435,8 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     }
     @IBAction func onSettingpressed(sender: AnyObject) {
         sfxSelect.play()
+        Activate.tag = 0
+        toolBar.hidden = true
         self.performSegueWithIdentifier("setting", sender: nil)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

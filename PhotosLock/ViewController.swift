@@ -30,9 +30,10 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
         super.viewDidLoad()
         passwordField.delegate = self
         confirmPasswordField.delegate = self
-        touchId()
+        
         let hasLogin = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
         if hasLogin {
+            touchId()
             passwordField.placeholder = "Enter Your Password"
             confirmPasswordField.hidden = true
             pressMe.hidden = true
@@ -59,8 +60,8 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
             self.presentViewController(alertView, animated: true, completion: nil)
             
         }
-        else if passwordField.placeholder == "Create Your Password"{
-            if passwordField.text == confirmPasswordField.text{
+        else if passwordField.placeholder == "Create Your Password"  {
+            if passwordField.text == confirmPasswordField.text && emailAddress.text != "" {
                 MykeychainWrapper.mySetObject(passwordField.text, forKey: kSecValueData)
                 MykeychainWrapper.writeToKeychain()
                 NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLoginKey")
@@ -69,9 +70,15 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
                 performSegueWithIdentifier("login", sender: self)
             }
             else{
-                view.makeToast(message: "Confirm password do not match")
-                passwordField.text = ""
-                confirmPasswordField.text = ""
+                if emailAddress.text == ""{
+                    view.makeToast(message: "Enter Email Address")
+                }
+                else if passwordField.text != confirmPasswordField.text{
+                    view.makeToast(message: "Confirm password do not match")
+                    passwordField.text = ""
+                    confirmPasswordField.text = ""
+                }
+                
             }
         }
         else if checkLogin(passwordField.text!){

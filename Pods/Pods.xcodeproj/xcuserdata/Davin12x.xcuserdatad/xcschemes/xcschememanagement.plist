@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>WYMaterialButton-WYMaterialButton.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>10FC9989980FAEC28F95AC5968880171</key>
+		<key>0F8936538DCC75B0A8BD87E638BF4DE0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -57,22 +62,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>32378149C6C439B393E5E428569C9622</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>3C6A643D5C440A146583E26FF97AEB8E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>80598C1B40C5CD842BE7C1CEB0C36260</key>
+		<key>86F7C6CBB0944FF89EA09BD5EF280AA3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A8642F530D7E0E2D35CA117EC21B0277</key>
+		<key>9D96346F03186539111E924ECA641D5B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AE6985F07D3DF67CD77117F775309E31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D4E69C16E361E1CF841466DFCA930EAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

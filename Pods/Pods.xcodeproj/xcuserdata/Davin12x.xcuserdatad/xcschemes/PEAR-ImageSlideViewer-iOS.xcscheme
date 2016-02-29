@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '021BCE57A2F350C985A2E36C'
+               BlueprintIdentifier = '7FE105F5498D05EB8A85223B'
                BlueprintName = 'PEAR-ImageSlideViewer-iOS'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PEAR_ImageSlideViewer_iOS.framework'>

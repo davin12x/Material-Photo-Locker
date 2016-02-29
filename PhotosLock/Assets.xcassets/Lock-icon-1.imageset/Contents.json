@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Lock-icon-1.png",
+      "filename" : "Lock-icon-2.png",
       "scale" : "1x"
     },
     {
@@ -11,6 +11,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "Lock-icon-1.png",
       "scale" : "3x"
     }
   ],

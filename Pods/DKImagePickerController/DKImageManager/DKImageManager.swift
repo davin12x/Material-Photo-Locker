@@ -100,8 +100,8 @@ public class DKImageManager: DKBaseManager {
 			contentMode: contentMode,
 			options: options ?? self.defaultImageRequestOptions,
 			resultHandler: { image, info in
-				if let isInCloud = info?[PHImageResultIsInCloudKey]?.boolValue
-					where isInCloud && self.autoDownloadWhenAssetIsInCloud {
+                if let isInCloud = info?[PHImageResultIsInCloudKey]?.boolValue
+                    where image == nil && isInCloud && self.autoDownloadWhenAssetIsInCloud {
 						var requestCloudOptions: PHImageRequestOptions
 						if let options = options {
 							requestCloudOptions = options.copy() as! PHImageRequestOptions

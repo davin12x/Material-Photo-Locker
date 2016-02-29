@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0D520E1C7E873500A18DCF /* RobotoTTF in Resources */ = {isa = PBXBuildFile; fileRef = 0A0D520D1C7E873500A18DCF /* RobotoTTF */; };
 		0A520F001C7190ED00E7F7B1 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A520EFF1C7190ED00E7F7B1 /* iAd.framework */; };
 		0A67B1261C7D5EE9003D4ADD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A67B1251C7D5EE9003D4ADD /* Settings.swift */; };
 		0AB1E2941C73C6ED00EC0052 /* delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1E2931C73C6ED00EC0052 /* delete.wav */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A0D520D1C7E873500A18DCF /* RobotoTTF */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RobotoTTF; sourceTree = "<group>"; };
 		0A520EFF1C7190ED00E7F7B1 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		0A67B1251C7D5EE9003D4ADD /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0AB1E2931C73C6ED00EC0052 /* delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = delete.wav; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				0AB1E29B1C73CDCD00EC0052 /* AddButton.wav */,
 				0AB1E2951C73C8DE00EC0052 /* click.mp3 */,
 				0AB473EA1C6CFEAF00CB3D0D /* HRToast+UIView.swift */,
+				0A0D520D1C7E873500A18DCF /* RobotoTTF */,
 				0AB473D91C6863AD00CB3D0D /* Controller */,
 				0AB473D81C6863A600CB3D0D /* View */,
 				0AB473D71C6863A000CB3D0D /* Model */,
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AB1E29A1C73CC0B00EC0052 /* select.wav in Resources */,
+				0A0D520E1C7E873500A18DCF /* RobotoTTF in Resources */,
 				0AB1E2981C73CB5900EC0052 /* add.wav in Resources */,
 				0AB473C81C666FBA00CB3D0D /* LaunchScreen.storyboard in Resources */,
 				0AB1E2961C73C8DE00EC0052 /* click.mp3 in Resources */,
@@ -369,7 +373,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -407,7 +412,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
