@@ -626,6 +626,7 @@
                         <outlet property="fingerprintLabel" destination="ylL-hy-mCD" id="g8G-Sz-gTI"/>
                         <outlet property="passwordField" destination="JGD-xo-hmo" id="y4C-eo-JcZ"/>
                         <outlet property="pressMe" destination="Ce6-ul-hFO" id="8dh-6l-4XF"/>
+                        <outlet property="thumbButton" destination="dug-vd-JUf" id="6rk-ax-n7V"/>
                         <segue destination="2i3-88-4O4" kind="show" identifier="login" id="oIk-aa-Qcu"/>
                     </connections>
                 </viewController>

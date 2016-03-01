@@ -9,6 +9,7 @@
 import UIKit
 import LocalAuthentication
 import MessageUI
+import SwiftSpinner
 
 
 class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
@@ -22,7 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
     @IBOutlet weak var fingerprintLabel: UILabel!
     @IBOutlet weak var emailAddress:UITextField!
     var smtpSession = MCOSMTPSession()
-    
+    @IBOutlet var thumbButton: UIButton!
     
     let MykeychainWrapper = KeychainWrapper()
     
@@ -30,6 +31,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
         super.viewDidLoad()
         passwordField.delegate = self
         confirmPasswordField.delegate = self
+       
         
         let hasLogin = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
         if hasLogin {
@@ -38,11 +40,15 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
             confirmPasswordField.hidden = true
             pressMe.hidden = true
             emailAddress.hidden = true
+            thumbButton.hidden = false
+            fingerprintLabel.text = "Use finger ID to unlock"
+            
         }else{
             passwordField.placeholder = "Create Your Password"
             confirmPasswordField.placeholder = "Confirm Password"
-            
             pressMe.hidden = false
+             thumbButton.hidden = true
+            fingerprintLabel.text = "Enter Your Information"
         }
         
     }
@@ -68,6 +74,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
                 NSUserDefaults.standardUserDefaults().setValue(emailAddress.text, forKey: "email")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 performSegueWithIdentifier("login", sender: self)
+                sendEmail()
             }
             else{
                 if emailAddress.text == ""{
@@ -109,49 +116,49 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
         else{
             ++WrongPassCount
             if WrongPassCount == 5{
-                smtpSession.hostname = "smtp.gmail.com"
-                smtpSession.username = "davin12x@gmail.com"
-                smtpSession.password = "ygzrgoedscmeinvu"
-                smtpSession.port = 465
-                smtpSession.authType = MCOAuthType.SASLPlain
-                smtpSession.connectionType = MCOConnectionType.TLS
-                smtpSession.connectionLogger = {(connectionID, type, data) in
-                    if data != nil {
-                        if let string = NSString(data: data, encoding: NSUTF8StringEncoding){
-                            NSLog("Connectionlogger: \(string)")
-                        }
-                    }
-                }
-                let builder = MCOMessageBuilder()
-                builder.header.to = [MCOAddress(displayName: "Photo Lock User", mailbox: getEmail())]
-                builder.header.from = MCOAddress(displayName: "Photo Lock", mailbox: getEmail())
-                builder.header.subject = "Password Recovery"
-                builder.htmlBody = "Your Password for Photo Lock is \(orignalPassword)"
-                let rfc822Data = builder.data()
-                self.WrongPassCount = 0
-                let sendOperation = smtpSession.sendOperationWithData(rfc822Data)
-                sendOperation.start { (error) -> Void in
-                    if (error != nil) {
-                        NSLog("Error sending email: \(error)")
-                        let alert = UIAlertController(title: "Password send failed", message: "Check Your Internet Connection", preferredStyle: UIAlertControllerStyle.Alert)
-                        let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
-                        alert.addAction(action)
-                        self.presentViewController(alert, animated: true, completion: nil)
-                        
-                    } else {
-                        NSLog("Successfully sent email!")
-                        
-                        let alert = UIAlertController(title: "Successfull", message: "Password sent to your email", preferredStyle: UIAlertControllerStyle.Alert)
-                        let action = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
-                        alert.addAction(action)
-                        self.presentViewController(alert, animated: true, completion: nil)
-                        
-                    }
-                }
+                sendEmail()
             }
             passwordField.placeholder = "Wrong Password"
             return false
             
+        }
+    }
+    func sendEmail(){
+        SwiftSpinner.show("Sending password to your mail ")
+        smtpSession.hostname = "smtp.gmail.com"
+        smtpSession.username = "davin12x@gmail.com"
+        smtpSession.password = "ygzrgoedscmeinvu"
+        smtpSession.port = 465
+        smtpSession.authType = MCOAuthType.SASLPlain
+        smtpSession.connectionType = MCOConnectionType.TLS
+        smtpSession.connectionLogger = {(connectionID, type, data) in
+            if data != nil {
+                if let string = NSString(data: data, encoding: NSUTF8StringEncoding){
+                    NSLog("Connectionlogger: \(string)")
+                }
+            }
+        }
+        let builder = MCOMessageBuilder()
+        builder.header.to = [MCOAddress(displayName: "Photo Lock User", mailbox: getEmail())]
+        builder.header.from = MCOAddress(displayName: "Photo Lock", mailbox: getEmail())
+        builder.header.subject = "Password Recovery"
+        builder.htmlBody = "Your Password for Photo Lock is \(orignalPassword)"
+        let rfc822Data = builder.data()
+        self.WrongPassCount = 0
+        let sendOperation = smtpSession.sendOperationWithData(rfc822Data)
+        sendOperation.start { (error) -> Void in
+            if (error != nil) {
+                NSLog("Error sending email: \(error)")
+                SwiftSpinner.show("Password not Sent.Check your Internet or Email").addTapHandler({
+                    SwiftSpinner.hide()
+                })
+                
+            } else {
+                NSLog("Successfully sent email!")
+                SwiftSpinner.hide()
+
+                
+            }
         }
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

@@ -366,8 +366,7 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
          view.makeToast(message: "Items imported to Gallery")
     }
     @IBAction func onAddPressed(sender: AnyObject) {
-        //self.sfxAdd.play()
-       
+        self.sfxAdd.play()
         pickerController.didSelectAssets = { (assets: [DKAsset]) in
             SwiftSpinner.show("Importing Images ")
             print("This is Assets: \(assets.count)")
