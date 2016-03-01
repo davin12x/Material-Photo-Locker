@@ -104,11 +104,42 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
             print(err.description)
         }
     }
+   func getSelectedItemColour(){
+    if selectedItems == true {
+        let indexPathofAllSelectedItem = collection.indexPathsForSelectedItems()
+        for indexPathofAllSelectedItems in indexPathofAllSelectedItem!{
+            let cell = collection.cellForItemAtIndexPath(indexPathofAllSelectedItems)
+            cell?.layer.borderWidth = 2.5
+            cell?.layer.borderColor = UIColor.orangeColor().CGColor
+            
+        }
+    }else if selectedItems == false{
+        let indexPathofAllSelectedItem = collection.indexPathsForSelectedItems()
+        for indexPathofAllSelectedItems in indexPathofAllSelectedItem!{
+            collection.deselectItemAtIndexPath(indexPathofAllSelectedItems, animated: true)
+            let cell = collection.cellForItemAtIndexPath(indexPathofAllSelectedItems)
+            cell?.layer.borderColor = UIColor.clearColor().CGColor
+        }
     
+    }
+    
+    }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if let cell = collection.dequeueReusableCellWithReuseIdentifier("photos", forIndexPath: indexPath) as? showCell{
             let photo = photos[indexPath.row]
-            cell.configureCell(photo)
+            getSelectedItemColour() //To get Colour when User Scroll
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),  {
+                // Load image on a non-ui-blocking thread
+                cell.configureCell(photo)
+                
+//                dispatch_sync(dispatch_get_main_queue(), {
+//                    // Assign image back on the main thread
+//                    
+//                });
+            });
+
+            
+            
             cell.layer.borderColor = UIColor.clearColor().CGColor
             return cell
         }else{
@@ -133,32 +164,20 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     @IBAction func onSelectAllPressed(sender:UIButton){
         selectItemToggle()
         sfxSelect.play()
+        isAllPhotoSelected()
+        
+    }
+    func isAllPhotoSelected(){
         if selectedItems == true{
-        for (var i = 0; i < collection.numberOfItemsInSection(0); ++i)
-        {
-            //Selecting all Items
-            collection.selectItemAtIndexPath(NSIndexPath(forRow: i, inSection: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.Left)
-            
-            }
-        
-         let indexPathofAllSelectedItem = collection.indexPathsForSelectedItems()
-            for indexPathofAllSelectedItems in indexPathofAllSelectedItem!{
-            let cell = collection.cellForItemAtIndexPath(indexPathofAllSelectedItems)
-            cell?.layer.borderWidth = 2.5
-            cell?.layer.borderColor = UIColor.orangeColor().CGColor
-            
-        }
-        }
-        if selectedItems == false{
-            //Deselecting All Items
-              let indexPathofAllSelectedItem = collection.indexPathsForSelectedItems()
-             for indexPathofAllSelectedItems in indexPathofAllSelectedItem!{
-            collection.deselectItemAtIndexPath(indexPathofAllSelectedItems, animated: true)
-               let cell = collection.cellForItemAtIndexPath(indexPathofAllSelectedItems)
-                cell?.layer.borderColor = UIColor.clearColor().CGColor
+            for (var i = 0; i < collection.numberOfItemsInSection(0); ++i)
+            {
+                //Selecting all Items
+                collection.selectItemAtIndexPath(NSIndexPath(forRow: i, inSection: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.Left)
+                
             }
         }
-        
+        getSelectedItemColour()
+    
     }
         func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
             sfxSelect.play()

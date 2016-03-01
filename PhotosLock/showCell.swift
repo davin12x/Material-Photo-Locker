@@ -22,8 +22,8 @@ class showCell: UICollectionViewCell {
         maxWidth = 200
         var imgRatio = actualWidth/actualHeight;
         var maxRatio = maxWidth/maxHeight;
-        var compressionQuality = CGFloat()//50 percent compression
-        compressionQuality = 0.1
+        var compressionQuality = CGFloat()
+        compressionQuality = 0.5
         
         if (actualHeight > maxHeight || actualWidth > maxWidth)
         {
@@ -53,7 +53,24 @@ class showCell: UICollectionViewCell {
         var img = UIGraphicsGetImageFromCurrentImageContext()
         var data = UIImageJPEGRepresentation(img, compressionQuality)!
         UIGraphicsEndImageContext();
-        photoImage.image = UIImage(data: data)
+        
+        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),  {
+//            // Load image on a non-ui-blocking thread
+//            
+//            
+//            dispatch_sync(dispatch_get_main_queue(), {
+//                // Assign image back on the main thread
+//                
+//               
+//                });
+//            });
+
+            dispatch_sync(dispatch_get_main_queue(), {
+                
+               self.photoImage.image = UIImage(data: data)
+            })
+        
         
          
     }
