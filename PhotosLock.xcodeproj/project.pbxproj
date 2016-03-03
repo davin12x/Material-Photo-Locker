@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0A0D520E1C7E873500A18DCF /* RobotoTTF in Resources */ = {isa = PBXBuildFile; fileRef = 0A0D520D1C7E873500A18DCF /* RobotoTTF */; };
 		0A520F001C7190ED00E7F7B1 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A520EFF1C7190ED00E7F7B1 /* iAd.framework */; };
+		0A5B5F441C87B1DA004C9770 /* BrookeS8.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5B5F431C87B1D9004C9770 /* BrookeS8.ttf */; };
+		0A5B5F461C87B2A5004C9770 /* Mf Sippin On Sunshine.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A5B5F451C87B2A5004C9770 /* Mf Sippin On Sunshine.ttf */; };
+		0A5B5F481C87B843004C9770 /* Open.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0A5B5F471C87B843004C9770 /* Open.wav */; };
 		0A67B1261C7D5EE9003D4ADD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A67B1251C7D5EE9003D4ADD /* Settings.swift */; };
 		0AB1E2941C73C6ED00EC0052 /* delete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1E2931C73C6ED00EC0052 /* delete.wav */; };
 		0AB1E2961C73C8DE00EC0052 /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0AB1E2951C73C8DE00EC0052 /* click.mp3 */; };
@@ -36,6 +39,9 @@
 /* Begin PBXFileReference section */
 		0A0D520D1C7E873500A18DCF /* RobotoTTF */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RobotoTTF; sourceTree = "<group>"; };
 		0A520EFF1C7190ED00E7F7B1 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		0A5B5F431C87B1D9004C9770 /* BrookeS8.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BrookeS8.ttf; sourceTree = "<group>"; };
+		0A5B5F451C87B2A5004C9770 /* Mf Sippin On Sunshine.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mf Sippin On Sunshine.ttf"; sourceTree = "<group>"; };
+		0A5B5F471C87B843004C9770 /* Open.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Open.wav; sourceTree = "<group>"; };
 		0A67B1251C7D5EE9003D4ADD /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0AB1E2931C73C6ED00EC0052 /* delete.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = delete.wav; sourceTree = "<group>"; };
 		0AB1E2951C73C8DE00EC0052 /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
@@ -104,7 +110,10 @@
 				0AB1E2971C73CB5900EC0052 /* add.wav */,
 				0AB1E2991C73CC0B00EC0052 /* select.wav */,
 				0AB1E29B1C73CDCD00EC0052 /* AddButton.wav */,
+				0A5B5F471C87B843004C9770 /* Open.wav */,
 				0AB1E2951C73C8DE00EC0052 /* click.mp3 */,
+				0A5B5F431C87B1D9004C9770 /* BrookeS8.ttf */,
+				0A5B5F451C87B2A5004C9770 /* Mf Sippin On Sunshine.ttf */,
 				0AB473EA1C6CFEAF00CB3D0D /* HRToast+UIView.swift */,
 				0A0D520D1C7E873500A18DCF /* RobotoTTF */,
 				0AB473D91C6863AD00CB3D0D /* Controller */,
@@ -146,8 +155,8 @@
 			children = (
 				0AB473BA1C666FB900CB3D0D /* AppDelegate.swift */,
 				0AB473BC1C666FB900CB3D0D /* ViewController.swift */,
-				0AB473E81C695AA100CB3D0D /* DetailVC.swift */,
 				0AB473E21C686A4400CB3D0D /* showVC.swift */,
+				0AB473E81C695AA100CB3D0D /* DetailVC.swift */,
 				0A67B1251C7D5EE9003D4ADD /* Settings.swift */,
 			);
 			name = Controller;
@@ -233,9 +242,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AB1E29A1C73CC0B00EC0052 /* select.wav in Resources */,
+				0A5B5F441C87B1DA004C9770 /* BrookeS8.ttf in Resources */,
+				0A5B5F481C87B843004C9770 /* Open.wav in Resources */,
 				0A0D520E1C7E873500A18DCF /* RobotoTTF in Resources */,
 				0AB1E2981C73CB5900EC0052 /* add.wav in Resources */,
 				0AB473C81C666FBA00CB3D0D /* LaunchScreen.storyboard in Resources */,
+				0A5B5F461C87B2A5004C9770 /* Mf Sippin On Sunshine.ttf in Resources */,
 				0AB1E2961C73C8DE00EC0052 /* click.mp3 in Resources */,
 				0AB1E2941C73C6ED00EC0052 /* delete.wav in Resources */,
 				0AB473C51C666FBA00CB3D0D /* Assets.xcassets in Resources */,

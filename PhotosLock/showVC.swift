@@ -40,6 +40,8 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     var orignalImages :[UIImage] = []
     var isImageSaved = false
     var phasset = PHAsset()
+    var screenSize: CGRect!
+    var screenWidth: CGFloat!
     @IBOutlet weak var trashButton: UIButton!
     
     @IBOutlet var toolBar: UIToolbar!
@@ -59,6 +61,18 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         pickerController.maxSelectableCount = 6
         fetchAndSetResult()
         toolBar.hidden = true
+        
+        screenSize = UIScreen.mainScreen().bounds
+        screenWidth = screenSize.width
+        let layout: UICollectionViewFlowLayout = collection.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        layout.itemSize = CGSize(width: screenWidth/3.1, height: screenWidth/3.2)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 5
+       
+     
+
+        
         do{
             try sfxTrash = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("delete", ofType: "wav")!))
             try sfxEdit = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("click", ofType: "mp3")!))
@@ -73,7 +87,6 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
         }catch let err as NSError{
             print(err)
         }
-        
     
         
     }
@@ -124,10 +137,15 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     }
+   
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if let cell = collection.dequeueReusableCellWithReuseIdentifier("photos", forIndexPath: indexPath) as? showCell{
             let photo = photos[indexPath.row]
+            //cell.frame.size.width = screenWidth / 3
+            cell.layer.borderColor = UIColor.blackColor().CGColor
+            cell.layer.borderWidth = 0.5
             getSelectedItemColour() //To get Colour when User Scroll
+            
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),  {
                 // Load image on a non-ui-blocking thread
                 cell.configureCell(photo)
@@ -140,7 +158,7 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
 
             
             
-            cell.layer.borderColor = UIColor.clearColor().CGColor
+        //    cell.layer.borderColor = UIColor.clearColor().CGColor
             return cell
         }else{
             return showCell()
@@ -280,16 +298,21 @@ class showVC: UIViewController, UICollectionViewDelegate,UICollectionViewDataSou
 //        
 //        return CGSize(width: 60, height: 60)
 //    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        if let layout = collection.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemWidth = view.bounds.width / 3.5
-            let itemHeight = layout.itemSize.height
-            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-            layout.invalidateLayout()
-        }
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//        
+////        if let layout = collection.collectionViewLayout as? UICollectionViewFlowLayout {
+////            let itemWidth = view.bounds.width / 3.5
+////            let itemHeight = layout.itemSize.height
+////            layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+////            layout.invalidateLayout()
+////        }
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+//        layout.itemSize = CGSize(width: screenWidth/3, height: screenWidth/2)
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 0
+//    }
     func OnDelPressed(){
        animatedTrash(2)
         let selectedItem = self.collection.indexPathsForSelectedItems()

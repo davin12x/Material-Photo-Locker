@@ -55,21 +55,16 @@ class showCell: UICollectionViewCell {
         UIGraphicsEndImageContext();
         
         
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),  {
-//            // Load image on a non-ui-blocking thread
-//            
-//            
-//            dispatch_sync(dispatch_get_main_queue(), {
-//                // Assign image back on the main thread
-//                
-//               
-//                });
-//            });
-
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),  {
+            // Load image on a non-ui-blocking thread
+            
+            
             dispatch_sync(dispatch_get_main_queue(), {
-                
-               self.photoImage.image = UIImage(data: data)
-            })
+                // Assign image back on the main thread
+                     self.photoImage.image = UIImage(data: data)
+               
+                });
+            });
         
         
          

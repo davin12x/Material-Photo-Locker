@@ -26,6 +26,8 @@
 	<array>
 		<string>RobotoCondensed-Light.ttf</string>
 		<string>Roboto-Light.ttf</string>
+		<string>BrookeS8.ttf</string>
+		<string>Mf Sippin On Sunshine.ttf</string>
 	</array>
 	<key>UIApplicationExitsOnSuspend</key>
 	<true/>

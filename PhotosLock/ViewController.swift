@@ -10,6 +10,7 @@ import UIKit
 import LocalAuthentication
 import MessageUI
 import SwiftSpinner
+import AVFoundation
 
 
 class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewControllerDelegate {
@@ -24,6 +25,8 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
     @IBOutlet weak var emailAddress:UITextField!
     var smtpSession = MCOSMTPSession()
     @IBOutlet var thumbButton: UIButton!
+    var sfxSelect:AVAudioPlayer!
+
     
     let MykeychainWrapper = KeychainWrapper()
     
@@ -31,7 +34,14 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
         super.viewDidLoad()
         passwordField.delegate = self
         confirmPasswordField.delegate = self
-       
+        do{
+            try sfxSelect = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Open", ofType: "wav")!))
+            
+            sfxSelect.prepareToPlay()
+            
+        }catch let err as NSError{
+            print(err)
+        }
         
         let hasLogin = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
         if hasLogin {
@@ -58,6 +68,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
     }
    
     @IBAction func onButtonPressed(sender: AnyObject) {
+        sfxSelect.play()
         if passwordField.text! == "" {
             let alertView = UIAlertController(title: "Login Problem",
                 message: "Wrong password." as String, preferredStyle:.Alert)
