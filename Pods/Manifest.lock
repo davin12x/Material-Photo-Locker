@@ -5,24 +5,18 @@ PODS:
   - DKImagePickerController/Camera (3.0.10)
   - DKImagePickerController/ImageManager (3.0.10)
   - mailcore2-ios (0.6.3)
-  - PEAR-AutoLayout-iOS (0.0.3)
-  - PEAR-ImageSlideViewer-iOS (0.1.1):
-    - PEAR-AutoLayout-iOS
   - SwiftSpinner (0.8.0)
   - WYMaterialButton (1.1.0)
 
 DEPENDENCIES:
   - DKImagePickerController
   - mailcore2-ios
-  - PEAR-ImageSlideViewer-iOS
   - SwiftSpinner
   - WYMaterialButton
 
 SPEC CHECKSUMS:
   DKImagePickerController: d95106cdabfb8661e7378bfaab1dd26fdf1ece31
   mailcore2-ios: c4bea2efd276f6f300b4386c70f6460487fa1b76
-  PEAR-AutoLayout-iOS: 5486f08f5b918b43b48f5a6dd364a2f00e514c00
-  PEAR-ImageSlideViewer-iOS: 0f23ff7df19e1d26a29ac63458c76fa39450e6e1
   SwiftSpinner: 11c2c5ec7443d92f3026d3067ca8a91d4adef13f
   WYMaterialButton: 9cda1166b88c6a6d89d61b9d2d93cc7d6c74e448
 

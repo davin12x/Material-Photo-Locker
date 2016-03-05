@@ -490,7 +490,7 @@ public class DKCamera: UIViewController {
 		self.motionManager.accelerometerUpdateInterval = 0.5
 		self.motionManager.gyroUpdateInterval = 0.5
 	}
-	
+	@available(iOS, deprecated=8.0)
 	public func initialOriginalOrientationForOrientation() {
 		self.originalOrientation = self.interfaceOrientation.toDeviceOrientation()
 		self.previewLayer.connection.videoOrientation = self.originalOrientation.toAVCaptureVideoOrientation()

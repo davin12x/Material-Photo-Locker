@@ -1,6 +1,0 @@
-framework module PEAR_ImageSlideViewer_iOS {
-  umbrella header "PEAR-ImageSlideViewer-iOS-umbrella.h"
-
-  export *
-  module * { export * }
-}

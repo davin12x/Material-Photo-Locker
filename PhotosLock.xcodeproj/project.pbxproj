@@ -33,6 +33,8 @@
 		0AB473E71C6870F400CB3D0D /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E51C6870F400CB3D0D /* Photos.swift */; };
 		0AB473E91C695AA100CB3D0D /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473E81C695AA100CB3D0D /* DetailVC.swift */; };
 		0AB473EB1C6CFEB100CB3D0D /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB473EA1C6CFEAF00CB3D0D /* HRToast+UIView.swift */; };
+		0AF5BEB61C8B333200C58387 /* INTERNALMATERIALICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF5BEB51C8B333200C58387 /* INTERNALMATERIALICON.png */; };
+		0AF5BEB81C8B36A200C58387 /* Material Icon StoryBorad.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AF5BEB71C8B36A200C58387 /* Material Icon StoryBorad.png */; };
 		B2C82CF485E88023255DBC36 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0BA65B28F5C673BD7FAB24 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		0AB473E51C6870F400CB3D0D /* Photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Photos.swift; path = ../Photos.swift; sourceTree = "<group>"; };
 		0AB473E81C695AA100CB3D0D /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		0AB473EA1C6CFEAF00CB3D0D /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HRToast+UIView.swift"; sourceTree = "<group>"; };
+		0AF5BEB51C8B333200C58387 /* INTERNALMATERIALICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = INTERNALMATERIALICON.png; sourceTree = "<group>"; };
+		0AF5BEB71C8B36A200C58387 /* Material Icon StoryBorad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Material Icon StoryBorad.png"; sourceTree = "<group>"; };
 		1E0BA65B28F5C673BD7FAB24 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85546A962C238117621810D0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D82FA1FC63A44B6CD10B9CBE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				0AB1E2971C73CB5900EC0052 /* add.wav */,
 				0AB1E2991C73CC0B00EC0052 /* select.wav */,
 				0AB1E29B1C73CDCD00EC0052 /* AddButton.wav */,
+				0AF5BEB51C8B333200C58387 /* INTERNALMATERIALICON.png */,
+				0AF5BEB71C8B36A200C58387 /* Material Icon StoryBorad.png */,
 				0A5B5F471C87B843004C9770 /* Open.wav */,
 				0AB1E2951C73C8DE00EC0052 /* click.mp3 */,
 				0A5B5F431C87B1D9004C9770 /* BrookeS8.ttf */,
@@ -241,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AF5BEB61C8B333200C58387 /* INTERNALMATERIALICON.png in Resources */,
 				0AB1E29A1C73CC0B00EC0052 /* select.wav in Resources */,
 				0A5B5F441C87B1DA004C9770 /* BrookeS8.ttf in Resources */,
 				0A5B5F481C87B843004C9770 /* Open.wav in Resources */,
@@ -251,6 +258,7 @@
 				0AB1E2961C73C8DE00EC0052 /* click.mp3 in Resources */,
 				0AB1E2941C73C6ED00EC0052 /* delete.wav in Resources */,
 				0AB473C51C666FBA00CB3D0D /* Assets.xcassets in Resources */,
+				0AF5BEB81C8B36A200C58387 /* Material Icon StoryBorad.png in Resources */,
 				0AB1E29C1C73CDCD00EC0052 /* AddButton.wav in Resources */,
 				0AB473C01C666FB900CB3D0D /* Main.storyboard in Resources */,
 			);
@@ -444,6 +452,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotosLock/PhotosLock-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -458,6 +467,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Bagga.PhotosLock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "PhotosLock/PhotosLock-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

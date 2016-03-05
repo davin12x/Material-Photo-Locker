@@ -26,7 +26,8 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
     var smtpSession = MCOSMTPSession()
     @IBOutlet var thumbButton: UIButton!
     var sfxSelect:AVAudioPlayer!
-
+    var hasLogin :Bool = false
+   
     
     let MykeychainWrapper = KeychainWrapper()
     
@@ -34,6 +35,10 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
         super.viewDidLoad()
         passwordField.delegate = self
         confirmPasswordField.delegate = self
+    
+
+
+
         do{
             try sfxSelect = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("Open", ofType: "wav")!))
             
@@ -43,7 +48,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
             print(err)
         }
         
-        let hasLogin = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
+         hasLogin = NSUserDefaults.standardUserDefaults().boolForKey("hasLoginKey")
         if hasLogin {
             touchId()
             passwordField.placeholder = "Enter Your Password"
@@ -57,15 +62,16 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
             passwordField.placeholder = "Create Your Password"
             confirmPasswordField.placeholder = "Confirm Password"
             pressMe.hidden = false
-             thumbButton.hidden = true
             fingerprintLabel.text = "Enter Your Information"
         }
         
     }
+   
     func getEmail()->String{
         let email = NSUserDefaults.standardUserDefaults().valueForKey("email")
         return email as! String
     }
+    
    
     @IBAction func onButtonPressed(sender: AnyObject) {
         sfxSelect.play()
@@ -114,6 +120,10 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
             return false
         }
     }
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     private var orignalPassword:String{
         _password = MykeychainWrapper.myObjectForKey("v_Data") as? String
         print(_password)
@@ -134,6 +144,7 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
             
         }
     }
+    
     func sendEmail(){
         SwiftSpinner.show("Sending password to your mail ")
         smtpSession.hostname = "smtp.gmail.com"
@@ -238,7 +249,13 @@ class ViewController: UIViewController, UITextFieldDelegate, MFMailComposeViewCo
 
 
     @IBAction func onTouchIdPressed(sender: AnyObject) {
-        touchId()
+        
+        if hasLogin{
+            touchId()
+        }
+        else{
+            view.makeToast(message: "Information is required")
+        }
     }
 
 }

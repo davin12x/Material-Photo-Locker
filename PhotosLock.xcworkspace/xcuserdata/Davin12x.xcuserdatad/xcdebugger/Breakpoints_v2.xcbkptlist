@@ -56,5 +56,68 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PhotosLock/ViewController.swift"
+            timestampString = "478822740.631508"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotosLock.ViewController.MykeychainWrapper.getter : __ObjC.KeychainWrapper"
+                  moduleName = "PhotosLock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Davin12x/Documents/PhotosLock/PhotosLock/ViewController.swift"
+                  timestampString = "478669746.746426"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotosLock.ViewController.init (PhotosLock.ViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; PhotosLock.ViewController"
+                  moduleName = "PhotosLock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Davin12x/Documents/PhotosLock/PhotosLock/ViewController.swift"
+                  timestampString = "478669746.746842"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "605">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PhotosLock.ViewController.init (PhotosLock.ViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;PhotosLock.ViewController&gt;"
+                  moduleName = "PhotosLock"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Davin12x/Documents/PhotosLock/PhotosLock/ViewController.swift"
+                  timestampString = "478669746.747124"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "478">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

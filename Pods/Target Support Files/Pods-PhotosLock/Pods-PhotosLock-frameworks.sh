@@ -85,15 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-PhotosLock/DKImagePickerController.framework"
-  install_framework "Pods-PhotosLock/PEAR_AutoLayout_iOS.framework"
-  install_framework "Pods-PhotosLock/PEAR_ImageSlideViewer_iOS.framework"
   install_framework "Pods-PhotosLock/SwiftSpinner.framework"
   install_framework "Pods-PhotosLock/WYMaterialButton.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-PhotosLock/DKImagePickerController.framework"
-  install_framework "Pods-PhotosLock/PEAR_AutoLayout_iOS.framework"
-  install_framework "Pods-PhotosLock/PEAR_ImageSlideViewer_iOS.framework"
   install_framework "Pods-PhotosLock/SwiftSpinner.framework"
   install_framework "Pods-PhotosLock/WYMaterialButton.framework"
 fi

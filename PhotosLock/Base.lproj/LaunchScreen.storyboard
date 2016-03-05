@@ -13,14 +13,39 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Material Icon StoryBorad.png" translatesAutoresizingMaskIntoConstraints="NO" id="bCB-D7-LMd">
+                                <rect key="frame" x="31" y="154" width="313" height="359"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="313" id="bvM-0j-hX9"/>
+                                    <constraint firstAttribute="height" constant="202" id="kxJ-DD-5TR"/>
+                                    <constraint firstAttribute="width" constant="259" id="lE4-eN-6it"/>
+                                    <constraint firstAttribute="height" constant="359" id="swh-ct-024"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kxJ-DD-5TR"/>
+                                        <exclude reference="lE4-eN-6it"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.18878205126666669" green="0.18878205126666669" blue="0.18878205126666669" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="bCB-D7-LMd" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="1Yw-ze-RQP"/>
+                            <constraint firstItem="bCB-D7-LMd" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="q5c-Ag-Slm"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="14.5" y="374.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Material Icon StoryBorad.png" width="500" height="500"/>
+    </resources>
 </document>

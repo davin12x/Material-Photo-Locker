@@ -1,1 +1,0 @@
-../../../PEAR-ImageSlideViewer-iOS/PEAR-ImageSlideViewer-iOS/PEARZoomView.h

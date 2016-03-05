@@ -9,16 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>PEAR-AutoLayout-iOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>PEAR-ImageSlideViewer-iOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-PhotosLock.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,42 +37,32 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0657BDC13AF90676D665A08071FAB46E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0F8936538DCC75B0A8BD87E638BF4DE0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>2419EB2E283D5E12618D87970B70F3A5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3C6A643D5C440A146583E26FF97AEB8E</key>
+		<key>6C0AE1CBC9E928907D0416A6D1E0034D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>86F7C6CBB0944FF89EA09BD5EF280AA3</key>
+		<key>7B3490FFDDB3B9DCF85729F6F6737D54</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D96346F03186539111E924ECA641D5B</key>
+		<key>949994DEF62072250FC1A668557DC868</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AE6985F07D3DF67CD77117F775309E31</key>
+		<key>A9B903C50BAE6EE088B1B9A6FAB4963D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D4E69C16E361E1CF841466DFCA930EAB</key>
+		<key>EFD61319C6A2F50E1BEAE5ED48B8374B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -21,7 +21,7 @@ class showCell: UICollectionViewCell {
         var maxWidth = CGFloat()
         maxWidth = 200
         var imgRatio = actualWidth/actualHeight;
-        var maxRatio = maxWidth/maxHeight;
+        let maxRatio = maxWidth/maxHeight;
         var compressionQuality = CGFloat()
         compressionQuality = 0.5
         
@@ -47,11 +47,11 @@ class showCell: UICollectionViewCell {
                 actualWidth = maxWidth;
             }
         }
-        var rect = CGRectMake(0, 0, actualWidth, actualHeight)
+        let rect = CGRectMake(0, 0, actualWidth, actualHeight)
         UIGraphicsBeginImageContext(rect.size)
         photo.getImage().drawInRect(rect)
-        var img = UIGraphicsGetImageFromCurrentImageContext()
-        var data = UIImageJPEGRepresentation(img, compressionQuality)!
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        let data = UIImageJPEGRepresentation(img, compressionQuality)!
         UIGraphicsEndImageContext();
         
         

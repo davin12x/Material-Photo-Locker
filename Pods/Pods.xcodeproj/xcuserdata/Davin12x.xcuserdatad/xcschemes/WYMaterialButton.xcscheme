@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4B9CA82411BBE544426D6965'
+               BlueprintIdentifier = 'DB23B85E1A0B2ABE10308C84'
                BlueprintName = 'WYMaterialButton'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'WYMaterialButton.framework'>
